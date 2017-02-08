@@ -7,6 +7,7 @@ public class Main {
 	  System.out.println("Candy Crush is trash.");
 	  System.out.println("Agreed");
 	  System.out.println("Bejeweled is better");
+	  System.out.println("This is kunyu.");
   }
 
 }
