@@ -1,6 +1,6 @@
 package code;
 
-public class example {
+public class update {
 
 	public doublePoint juliaSet(doublePoint p) {
 		doublePoint juliaPoint = new doublePoint();
