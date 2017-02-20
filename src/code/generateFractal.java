@@ -34,8 +34,7 @@ public class generateFractal {
 				
 				int escapeTime; //value to be written to the array
 				doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is seperate from the coordinates
-				XYCalc.x = currentXY.x;
-				XYCalc.y = currentXY.y;
+				XYCalc = currentXY;
 				
 				
 				dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin

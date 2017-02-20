@@ -31,7 +31,7 @@ public class update {
 		
 		doublePoint mandlePoint = new doublePoint();
 		mandlePoint.x = Math.pow(XYCalc.x, 2) - Math.pow(XYCalc.y, 2) + currentXY.x;
-		mandlePoint.x = 2* XYCalc.x * XYCalc.y + currentXY.x;
+		mandlePoint.y = 2* XYCalc.x * XYCalc.y + currentXY.y;
 
 		return mandlePoint;
 	}
