@@ -4,18 +4,15 @@ public class update {
 
 	public doublePoint updateXY(int fractalType, doublePoint XYCalc, doublePoint currentXY ){
 		if(fractalType ==1){
-			//TODO add Mandlebrot set
 			return mandlebrotSet(XYCalc, currentXY);
 		}
 		else if(fractalType ==2){
 			return juliaSet(XYCalc);
 		}
 		else if(fractalType == 3){
-			//TODO add burning Ship set
 			return burningShipSet(XYCalc, currentXY);
 		}
 		else {
-			//TODO add Multibrot set
 			return multibrotSet(XYCalc, currentXY);
 		}
 	}

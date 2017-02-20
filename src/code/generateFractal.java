@@ -22,9 +22,9 @@ public class generateFractal {
 		double xSpace = (xRangeEnd -  xRangeStart) / fractalWidth;//calculates the padding between each x-coordinate
 		double ySpace = (yRangeEnd -  yRangeStart) / fractalHeight;//calculates the padding between each y-coordinate
 		
-		
 		currentXY.x= xRangeStart;
 		currentXY.y = yRangeStart;
+		double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		
 		for(int cols = 0; cols<fractalHeight; cols++){
 			currentXY.y = currentXY.y + ySpace;// increases the y coordinate by yspace
@@ -38,7 +38,7 @@ public class generateFractal {
 				XYCalc.y = currentXY.y;
 				
 				
-				double dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
+				dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
 				int passes = 0;
 				
 				while(dist <= escapeDistance && passes < maxSteps ){
@@ -66,7 +66,7 @@ public class generateFractal {
 		int escapeDistance = 4; //default escape distance
 		int maxSteps = 255; //default max steps
 		
-		double xRangeStart =0;
+		double xRangeStart =0;//innitializ 
 		double xRangeEnd =0;
 		double yRangeStart =0;
 		double yRangeEnd =0;
