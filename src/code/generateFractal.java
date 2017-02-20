@@ -18,26 +18,36 @@ public class generateFractal {
 	public int[][] genFractal(int fractalType, int fractalWidth, int fractalHeight,double xRangeStart, double xRangeEnd, double yRangeStart,double yRangeEnd, int escapeDistance, int maxSteps){
 		
 		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
-		doublePoint currentXY = new doublePoint();
+		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
+		double xSpace = (xRangeEnd -  xRangeStart) / fractalWidth;//calculates the padding between each x-coordinate
+		double ySpace = (yRangeEnd -  yRangeStart) / fractalHeight;//calculates the padding between each y-coordinate
+		
 		
 		currentXY.x= xRangeStart;
 		currentXY.y = yRangeStart;
 		
-		for(int cols = 0; cols<fractalHeight; cols++){
+		//for(int cols = 0; cols<fractalHeight; cols++){ //original, will probably input escape time in backawards order
+			for(int cols = fractalHeight -1; cols>=0; cols--){// "Should" order escape time properly
+			currentXY.y = currentXY.y + ySpace;// increases the y coordinate by yspace
 			
-			for(int rows = 0; rows <fractalWidth;rows++){
+			//for(int rows = 0; rows <fractalWidth;rows++){ will probably input escape time in backawards order
+				for(int rows = fractalWidth; rows >= 0;rows--){// "Should" order escape time properly
+				currentXY.x = currentXY.x + xSpace; //increases the x coordinate by xspace
 				
 				int escapeTime; //value to be written to the array
+				doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is seperate from the coordinates
+				XYCalc.x = currentXY.x;
+				XYCalc.y = currentXY.y;
 				
 				
-				double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
+				double dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
 				int passes = 0;
 				
 				while(dist <= escapeDistance && passes < maxSteps ){
-					update update = new update();
-					currentXY = update.updateXY(fractalType, currentXY);
+					update update = new update();//can probably move this code outside of loop for better run times
+					XYCalc = update.updateXY(fractalType, XYCalc, currentXY);
 					passes++;		
-					dist = distance(currentXY.x, currentXY.y) ;
+					dist = distance(XYCalc.x,XYCalc.y) ;
 				}
 				escapeTime= passes;
 				
