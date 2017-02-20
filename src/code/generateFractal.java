@@ -26,12 +26,10 @@ public class generateFractal {
 		currentXY.x= xRangeStart;
 		currentXY.y = yRangeStart;
 		
-		//for(int cols = 0; cols<fractalHeight; cols++){ //original, will probably input escape time in backawards order
-			for(int cols = fractalHeight -1; cols>=0; cols--){// "Should" order escape time properly
+		for(int cols = 0; cols<fractalHeight; cols++){
 			currentXY.y = currentXY.y + ySpace;// increases the y coordinate by yspace
 			
-			//for(int rows = 0; rows <fractalWidth;rows++){ will probably input escape time in backawards order
-				for(int rows = fractalWidth; rows >= 0;rows--){// "Should" order escape time properly
+			for(int rows = 0; rows <fractalWidth;rows++){ 
 				currentXY.x = currentXY.x + xSpace; //increases the x coordinate by xspace
 				
 				int escapeTime; //value to be written to the array
