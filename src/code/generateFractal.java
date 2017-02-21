@@ -28,12 +28,12 @@ public class generateFractal {
 		double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		
 		for(int cols = 0; cols<fractalHeight; cols++){
-			currentXY.y = currentXY.y + ySpace;// increases the y coordinate by yspace
+			currentXY.y = yRangeStart + ySpace * cols;// increases the y coordinate by yspace
 			currentXY.x = xRangeStart;
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
-				currentXY.x = currentXY.x + xSpace; //increases the x coordinate by xspace
-				
+				currentXY.x = xRangeStart + xSpace * rows; //increases the x coordinate by xspace
+
 				int escapeTime; //value to be written to the array
 				doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is seperate from the coordinates
 				XYCalc = currentXY;
