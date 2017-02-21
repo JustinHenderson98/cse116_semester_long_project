@@ -19,15 +19,17 @@ public class generateFractal {
 		
 		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
 		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
-		double xSpace = (xRangeEnd -  xRangeStart) / fractalWidth;//calculates the padding between each x-coordinate
-		double ySpace = (yRangeEnd -  yRangeStart) / fractalHeight;//calculates the padding between each y-coordinate
+		double xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
+		double ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
 		
-		currentXY.x= xRangeStart;
+		currentXY.x = xRangeStart;
 		currentXY.y = yRangeStart;
+		
 		double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		
 		for(int cols = 0; cols<fractalHeight; cols++){
 			currentXY.y = currentXY.y + ySpace;// increases the y coordinate by yspace
+			currentXY.x = xRangeStart;
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
 				currentXY.x = currentXY.x + xSpace; //increases the x coordinate by xspace
