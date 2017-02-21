@@ -26,7 +26,6 @@ public class generateFractal {
 		currentXY.y = yRangeStart;
 		
 		double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
-		
 		for(int cols = 0; cols<fractalHeight; cols++){
 			currentXY.y = yRangeStart + ySpace * cols;// increases the y coordinate by yspace
 			currentXY.x = xRangeStart;
@@ -96,6 +95,10 @@ public class generateFractal {
 		}
 		//default range values for unknown set
 		else if(fractalType ==4){
+			xRangeStart = -1.0;
+			 xRangeEnd= 1.0;
+			 yRangeStart = -1.3;
+			 yRangeEnd = 1.3;
 			
 		}
 		return genFractal(fractalType, width, height, xRangeStart, xRangeEnd,  yRangeStart, yRangeEnd, escapeDistance, maxSteps);

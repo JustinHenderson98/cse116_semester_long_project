@@ -9,14 +9,14 @@ public class Main {
 	  generateFractal genFrac = new generateFractal();
 	  
 	  int[][] pot = genFrac.genFractal(1);
-	  for (int i = 0; i < pot.length; i++) {
-		  System.out.println("");
-		for (int j = 0; j < pot.length; j++) {
-			System.out.print(pot[i][j]);
-			
-			
-		}
-	}
+//	  for (int i = 0; i < pot.length; i++) {
+//		  System.out.println("");
+//		for (int j = 0; j < pot.length; j++) {
+//			System.out.print(pot[i][j]);
+//			
+//			
+//		}
+//	}
 	  
   }
 
