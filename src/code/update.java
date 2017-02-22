@@ -38,7 +38,7 @@ public class update {
 
 	public doublePoint juliaSet(doublePoint XYCalc) {
 		doublePoint juliaPoint = new doublePoint();
-		juliaPoint.x = Math.pow(XYCalc.x, 2.0) +  Math.pow(XYCalc.y, 2.0) - 0.72689;
+		juliaPoint.x = Math.pow(XYCalc.x, 2.0) -  Math.pow(XYCalc.y, 2.0) - 0.72689;
 		juliaPoint.y = 2.0 * XYCalc.x * XYCalc.y + 0.188887;
 		return juliaPoint;
 	}
