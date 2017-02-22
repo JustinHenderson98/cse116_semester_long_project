@@ -23,8 +23,10 @@ public class update {
 	}
 
 	private doublePoint burningShipSet(doublePoint XYCalc, doublePoint currentXY) {
-		// TODO Auto-generated method stub
-		return null;
+		doublePoint shipPoint = new doublePoint();
+		shipPoint.x = XYCalc.x*XYCalc.x - XYCalc.y*XYCalc.y + currentXY.x;
+		shipPoint.x = Math.abs(2 * XYCalc.x * XYCalc.y) + currentXY.y;
+		return shipPoint;
 	}
 
 	private doublePoint mandlebrotSet(doublePoint XYCalc, doublePoint currentXY) {
