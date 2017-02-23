@@ -34,7 +34,7 @@ public class generateFractal {
 				currentXY.x = xRangeStart + xSpace * rows; //increases the x coordinate by xspace
 
 				int escapeTime; //value to be written to the array
-				doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is seperate from the coordinates
+				doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
 				XYCalc = currentXY;
 				
 				
@@ -66,7 +66,7 @@ public class generateFractal {
 		int escapeDistance = 4; //default escape distance
 		int maxSteps = 255; //default max steps
 		
-		double xRangeStart =0;//innitializ 
+		double xRangeStart =0;//initialize 
 		double xRangeEnd =0;
 		double yRangeStart =0;
 		double yRangeEnd =0;
