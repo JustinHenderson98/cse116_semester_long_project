@@ -18,13 +18,15 @@ public class update {
 	}
 	
 	private doublePoint multibrotSet(doublePoint XYCalc, doublePoint currentXY) {
-		// TODO Auto-generated method stub
-		return null;
+		doublePoint multiPoint = new doublePoint();
+		multiPoint.x = (XYCalc.x * XYCalc.x * XYCalc.x) - (3 * XYCalc.x * XYCalc.y * XYCalc.y) + currentXY.x;
+		multiPoint.y = (3 * XYCalc.x * XYCalc.x * XYCalc.y) - (XYCalc.y * XYCalc.y * XYCalc.y) + currentXY.y;
+		return multiPoint;
 	}
 
 	private doublePoint burningShipSet(doublePoint XYCalc, doublePoint currentXY) {
 		doublePoint shipPoint = new doublePoint();
-		shipPoint.x = XYCalc.x*XYCalc.x - XYCalc.y*XYCalc.y + currentXY.x;
+		shipPoint.x = XYCalc.x * XYCalc.x - XYCalc.y * XYCalc.y + currentXY.x;
 		shipPoint.x = Math.abs(2 * XYCalc.x * XYCalc.y) + currentXY.y;
 		return shipPoint;
 	}
