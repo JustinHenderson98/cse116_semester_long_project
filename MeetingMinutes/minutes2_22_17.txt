@@ -1,0 +1,26 @@
+Meeting Minutes for __2/22/17_____________:
+
+Meeting Attendance:
+  *M Justin Henderson
+  *Kunyu Wu
+  *Ethan Gagne
+  *Ben Conom
+
+Tasks completed since last meeting:
+  *built main method
+  * created outline for each fractal
+  
+
+Tasks started, but not completed, since last meeting:
+  *fractals added, multibrot, 
+  *
+
+Tasks to be worked on (and by which team members) for the next meeting:
+  *  kunyu 
+  *Justin will
+  *Ben will do multibrot
+  * ethan test cases
+
+Schedule for the next week's set of pair programming meetings:
+  *Justin ben with  8-10 sat, and sun
+  * ethan, kunyu 8-10 sat , and sun
