@@ -38,7 +38,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void juliaTest2(doublePoint p){
+	public void juliaTest2(doublePoint XYCalc){
 		update juliaTest2 = new update();
 		doublePoint output = juliaTest2.juliaSet(p.x);
 		assertEquals(, output, 0.01);
