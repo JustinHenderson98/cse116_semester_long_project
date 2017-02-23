@@ -25,7 +25,7 @@ public class generateFractal {
 		currentXY.x = xRangeStart;
 		currentXY.y = yRangeStart;
 		
-		double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
+	//	double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		for(int cols = 0; cols<fractalHeight; cols++){
 			currentXY.y = yRangeStart + ySpace * cols;// increases the y coordinate by yspace
 			currentXY.x = xRangeStart;
@@ -33,23 +33,9 @@ public class generateFractal {
 			for(int rows = 0; rows <fractalWidth;rows++){ 
 				currentXY.x = xRangeStart + xSpace * rows; //increases the x coordinate by xspace
 
-				int escapeTime; //value to be written to the array
-				doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
-				XYCalc = currentXY;
 				
 				
-				dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
-				int passes = 0;
-				
-				while(dist <= escapeDistance && passes < maxSteps ){
-					update update = new update();//can probably move this code outside of loop for better run times
-					XYCalc = update.updateXY(fractalType, XYCalc, currentXY);
-					passes++;		
-					dist = distance(XYCalc.x,XYCalc.y) ;
-				}
-				escapeTime= passes;
-				
-				fractalSet[cols][rows] = escapeTime;
+				fractalSet[cols][rows] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
 			}
 		}
 		
@@ -105,8 +91,25 @@ public class generateFractal {
 	}
 
 		public double distance(double x,double y){
-			//calculates the distance from point x,y from the oragin
+			//calculates the distance from point x,y from the origin
 			return Math.pow((Math.pow(x, 2.0) + Math.pow(y, 2.0)), 0.5);
 			
+		}
+		public int escapeTime(int fractalType, doublePoint currXY, int escapeDistance, int maxSteps){
+			doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
+			XYCalc = currXY;
+			
+			
+			 double dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
+			int passes = 0;
+			
+			while(dist <= escapeDistance && passes < maxSteps ){
+				update update = new update();//can probably move this code outside of loop for better run times
+				XYCalc = update.updateXY(fractalType, XYCalc, currXY);
+				passes++;		
+				dist = distance(XYCalc.x,XYCalc.y) ;
+			}
+			
+			return passes;
 		}
 }
