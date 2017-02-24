@@ -78,4 +78,20 @@ public class escapetimeTests {
 		int output = multibrotTest2.escapeTime(4, p7, 2, 0);
 		assertEquals(0, output, 0.01);
 	}
+	
+	@Test
+	public void burningshipTest3(){
+		generateFractal burningshipTest3 = new generateFractal();
+		doublePoint p8 = new doublePoint();
+		p8.x = -1.7443359374999874;
+		p8.y = -0.017451171875000338;
+		int[][] output = burningshipTest3.genFractal(3);
+		for (int i = 0; i < output.length; i++) {
+			for (int j = 0; j < output.length; j++) {
+				if(1==output[i][j] || output[i][j] == 0){
+					fail();
+			}
+		}	
+		}
+	}
 }

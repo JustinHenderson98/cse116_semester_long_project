@@ -28,7 +28,7 @@ public class update {
 	private doublePoint burningShipSet(doublePoint XYCalc, doublePoint currentXY) {
 		doublePoint shipPoint = new doublePoint();
 		shipPoint.x = XYCalc.x * XYCalc.x - XYCalc.y * XYCalc.y + currentXY.x;
-		shipPoint.x = Math.abs(2 * XYCalc.x * XYCalc.y) + currentXY.y;
+		shipPoint.y = Math.abs(2 * XYCalc.x * XYCalc.y) + currentXY.y;
 		return shipPoint;
 	}
 

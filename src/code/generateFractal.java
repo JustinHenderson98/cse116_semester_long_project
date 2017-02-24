@@ -77,7 +77,7 @@ public class generateFractal {
 			xRangeStart = -1.8;
 			 xRangeEnd= -1.7;
 			 yRangeStart = -0.08;
-			 yRangeEnd = -0.025;
+			 yRangeEnd = 0.025;
 		}
 		//default range values for multibrot set
 		else if(fractalType ==4){
