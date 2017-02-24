@@ -50,23 +50,32 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void juliaTest2(doublePoint XYCalc){
-		update juliaTest2 = new update();
-		doublePoint output = juliaTest2.juliaSet();
-		assertEquals(0.0, output, 0.01);
+	public void mandlebrotTest2(doublePoint XYCalc, doublePoint currentXY){
+		generateFractal mandlebrotTest2 = new generateFractal();
+		doublePoint p6 = new doublePoint();
+		p6.x = 0.3207031250000001;
+		p6.y = -0.07109374999999386;
+		int output = mandlebrotTest2.escapeTime(1, p6, 2, 0);
+		assertEquals(0, output, 0.01);
 	}
 	
 	@Test
-	public void mandlebrotTest2(doublePoint XYCalc, doublePoint currentXY){
-		update mandlebrotTest2 = new update();
-		doublePoint output = mandlebrotTest2.mandlebrotSet();
-		assertEquals(0.0, output, 0.01);
+	public void juliaTest2(doublePoint XYCalc){
+		generateFractal juliaTest2 = new generateFractal();
+		doublePoint p5 = new doublePoint();
+		p5.x = 1.0492187499999897;
+		p5.y = -0.234375;
+		int output = juliaTest2.escapeTime(2, p5, 2, 0);
+		assertEquals(0, output, 0.01);
 	}
 	
 	@Test
 	public void multibrotTest2(doublePoint XYCalc, doublePoint currentXY){
-		update multibrotTest2 = new update();
-		doublePoint output = multibrotTest2.multibrotSet();
-		assertEquals(0.0, output, 0.01);
+		generateFractal multibrotTest2 = new generateFractal();
+		doublePoint p7 = new doublePoint();
+		p7.x = 0.5859375;
+		p7.y = 0.24375000000000108;
+		int output = multibrotTest2.escapeTime(4, p7, 2, 0);
+		assertEquals(0, output, 0.01);
 	}
 }

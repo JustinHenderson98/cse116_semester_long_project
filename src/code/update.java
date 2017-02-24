@@ -12,9 +12,10 @@ public class update {
 		else if(fractalType == 3){
 			return burningShipSet(XYCalc, currentXY);
 		}
-		else {
+		else if(fractalType == 4){
 			return multibrotSet(XYCalc, currentXY);
 		}
+		return currentXY;//TODO add exception
 	}
 	
 	private doublePoint multibrotSet(doublePoint XYCalc, doublePoint currentXY) {
