@@ -2,7 +2,7 @@ package code;
 
 public class doublePoint {
 
-	double x;//xCalc value
-	double y;//yCalc value
+	public double x;//xCalc value
+	public double y;//yCalc value
 	
 }

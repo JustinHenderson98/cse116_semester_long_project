@@ -3,7 +3,7 @@ package code;
 public class generateFractal {
 	/**
 	 * 
-	 * @param fractalType int 1-4 determines if Mandlebrot, Julia, burning Ship, unknown
+	 * @param fractalType int 1-4 determines if Mandlebrot, Julia, burning Ship, Multibrot
 	 * @param fractalWidth num of rows in the fractal array
 	 * @param FractalHeight num of columns in the fractal array 
 	 * @param xRangeStart 
@@ -79,7 +79,7 @@ public class generateFractal {
 			 yRangeStart = -0.08;
 			 yRangeEnd = -0.025;
 		}
-		//default range values for unknown set
+		//default range values for multibrot set
 		else if(fractalType ==4){
 			xRangeStart = -1.0;
 			 xRangeEnd= 1.0;
