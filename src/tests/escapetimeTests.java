@@ -10,7 +10,7 @@ import code.generateFractal;
 public class escapetimeTests {
 	
 	@Test
-	public void mandlebrotTest(doublePoint XYCalc, doublePoint currentXY){
+	public void mandlebrotTest(){
 		generateFractal mandlebrotTest = new generateFractal();
 		doublePoint p1 = new doublePoint(); 
 		p1.x = 0.3207031250000001;
@@ -20,7 +20,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void juliaTest(doublePoint p){
+	public void juliaTest(){
 		generateFractal juliaTest = new generateFractal();
 		doublePoint p2 = new doublePoint();
 		p2.x = 1.0492187499999897;
@@ -30,7 +30,7 @@ public class escapetimeTests {
 	}
 
 	@Test
-	public void burningshipTest(doublePoint XYCalc, doublePoint currentXY){
+	public void burningshipTest(){
 		generateFractal burningshipTest = new generateFractal();
 		doublePoint p3 = new doublePoint();
 		p3.x = -1.7443359374999874;
@@ -40,7 +40,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void multibrotTest(doublePoint XYCalc, doublePoint currentXY){
+	public void multibrotTest(){
 		generateFractal multibrotTest = new generateFractal();
 		doublePoint p4 = new doublePoint();
 		p4.x = 0.5859375;
@@ -50,7 +50,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void mandlebrotTest2(doublePoint XYCalc, doublePoint currentXY){
+	public void mandlebrotTest2(){
 		generateFractal mandlebrotTest2 = new generateFractal();
 		doublePoint p6 = new doublePoint();
 		p6.x = 0.3207031250000001;
@@ -60,7 +60,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void juliaTest2(doublePoint XYCalc){
+	public void juliaTest2(){
 		generateFractal juliaTest2 = new generateFractal();
 		doublePoint p5 = new doublePoint();
 		p5.x = 1.0492187499999897;
@@ -70,7 +70,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void multibrotTest2(doublePoint XYCalc, doublePoint currentXY){
+	public void multibrotTest2(){
 		generateFractal multibrotTest2 = new generateFractal();
 		doublePoint p7 = new doublePoint();
 		p7.x = 0.5859375;
