@@ -82,16 +82,33 @@ public class escapetimeTests {
 	@Test
 	public void burningshipTest3(){
 		generateFractal burningshipTest3 = new generateFractal();
-		doublePoint p8 = new doublePoint();
-		p8.x = -1.7443359374999874;
-		p8.y = -0.017451171875000338;
 		int[][] output = burningshipTest3.genFractal(3);
 		for (int i = 0; i < output.length; i++) {
 			for (int j = 0; j < output.length; j++) {
 				if(1==output[i][j] || output[i][j] == 0){
 					fail();
-			}
-		}	
+				}
+			}	
 		}
+	}
+	
+	@Test
+	public void return2darray(){
+		generateFractal return2darray = new generateFractal();
+		int[][] array = return2darray.genFractal(1);
+		assertEquals(512, array.length);
+		assertEquals(512, array[0].length);
+		
+		array = return2darray.genFractal(2);
+		assertEquals(512, array.length);
+		assertEquals(512, array[0].length);
+		
+		array = return2darray.genFractal(3);
+		assertEquals(512, array.length);
+		assertEquals(512, array[0].length);
+		
+		array = return2darray.genFractal(4);
+		assertEquals(512, array.length);
+		assertEquals(512, array[0].length);
 	}
 }
