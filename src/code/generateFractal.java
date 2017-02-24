@@ -49,7 +49,7 @@ public class generateFractal {
 	public int[][] genFractal(int fractalType){
 		int width = 512; //default width
 		int height = 512; //default height
-		int escapeDistance = 4; //default escape distance
+		int escapeDistance = 2; //default escape distance
 		int maxSteps = 255; //default max steps
 		
 		double xRangeStart =0;//initialize 
