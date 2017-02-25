@@ -17,7 +17,7 @@ Tasks started, but not completed, since last meeting:
 
 Tasks to be worked on (and by which team members) for the next meeting:
   *  kunyu 
-  *Justin will
+  *Justin will do bug testing
   *Ben will do multibrot
   * ethan test cases
 
