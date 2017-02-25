@@ -137,6 +137,25 @@ public class generateFractal {
 			
 		}
 		
+		public int escapeTime(int fractalType, doublePoint currXY, int escapeDistance, int maxSteps){
+			doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
+			XYCalc = currXY;
+			
+			
+			 double dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
+			int passes = 0;
+			
+			while(dist <= escapeDistance && passes < maxSteps ){
+				update update = new update();//can probably move this code outside of loop for better run times
+				XYCalc = update.updateXY(fractalType, XYCalc, currXY);
+				passes++;		
+				dist = distance(XYCalc.x,XYCalc.y) ;
+			}
+			
+			return passes;
+			
+		}
+		
 		
 		//converts the current row in the 2d array to the curent pixel
 		public double pixelRowToCoordinate(int rows ){
