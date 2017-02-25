@@ -2,13 +2,12 @@ package tests;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import code.doublePoint;
 import code.generateFractal;
 
-public class escapetimeTests {	
+public class escapetimeTests {
 	
 	@Test
 	public void mandlebrotTest(){
@@ -94,7 +93,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void return2darrayTest(){
+	public void return2darray(){
 		generateFractal return2darray = new generateFractal();
 		int[][] array = return2darray.genFractal(1);
 		assertEquals(512, array.length);
@@ -112,92 +111,125 @@ public class escapetimeTests {
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 	}
-	
 	@Test
-	public void pixelToCoordinateXTest1(){
+	public void pixelToCoordinateXTestMandlebrot(){
+		double rangeStart = -2.15;
+		double rangeEnd= 0.6;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateXTest1 = new generateFractal();
-		double output = pixelToCoordinateXTest1.pixelRowToCoordinate(0);
+		double output = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, space, 0);
 		assertEquals(-2.15, output, 0.00001);
-		double output2 = pixelToCoordinateXTest1.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, space, 512);
 		assertEquals(0.6, output2, 0.00001);
-		double output3 = pixelToCoordinateXTest1.pixelRowToCoordinate(206);
+		double output3 = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, space,206);
 		assertEquals(-1.043554688, output3, 0.00001);
 	}
 	
 	@Test
-	public void pixelToCoordinateXTest2(){
+	public void pixelToCoordinateXTestJulia(){
+		double rangeStart = -1.7;
+		double rangeEnd= 1.7;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateXTest2 = new generateFractal();
-		double output = pixelToCoordinateXTest2.pixelRowToCoordinate(0);
+		double output = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,0);
 		assertEquals(-1.7, output, 0.00001);
-		double output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,512);
 		assertEquals(1.7, output2, 0.00001);
-	    double output3 = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
-		assertEquals(, output3, 0.00001);
+	    double output3 = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,512);
+		//assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
-	public void pixelToCoordinateXTest3(){
+	public void pixelToCoordinateXTestBurning(){
+		double rangeStart = -1.8;
+		double rangeEnd= -1.7;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateXTest3 = new generateFractal();
-		double output = pixelToCoordinateXTest3.pixelRowToCoordinate(0);
+		double output = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,0);
 		assertEquals(-1.8, output, 0.00001);
-		double output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,512);
 		assertEquals(-1.7, output2, 0.00001);
-		double output3 = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
-		assertEquals(, output3, 0.00001);
+		double output3 = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,512);
+		//assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
-	public void pixelToCoordinateXTest4(){
+	public void pixelToCoordinateXTestMultibrot(){
+		double rangeStart = -1.0;
+		double rangeEnd= 1.0;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateXTest4 = new generateFractal();
-		double output = pixelToCoordinateXTest4.pixelRowToCoordinate(0);
+		double output = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,0);
 		assertEquals(-1.0, output, 0.00001);
-		double output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,512);
 		assertEquals(1.0, output2, 0.00001);
-		double output3 = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
-		assertEquals(, output3, 0.00001);
+		double output3 = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,512);
+		//assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
-	public void pixelToCoordinateYTest1(){
+	public void pixelToCoordinateYTestMandlebrot(){
+		double rangeStart = -1.3;
+		double rangeEnd= 1.3;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateYTest1 = new generateFractal();
-		double output = pixelToCoordinateYTest1.pixelColToCoordinate(0);
+		double output = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,0);
 		assertEquals(-1.3, output, 0.0001);
-		double output2 = pixelToCoordinateYTest1.pixelColToCoordinate(512);
-		assertEquals(1.3, output, 0.0001);
-		double output3 = pixelToCoordinateYTest1.pixelColToCoordinate(512);
-		assertEquals(, output, 0.0001);
+		double output2 = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,512);
+		assertEquals(1.3, output2, 0.0001);
+		double output3 = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,512);
+		//assertEquals(, output, 0.0001);
 	}
 	
 	@Test
-	public void pixelToCoordinateYTest2(){
+	public void pixelToCoordinateYTestJulia(){
+		double rangeStart = -1.0;
+		double rangeEnd= 1.0;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateYTest2 = new generateFractal();
-		double output = pixelToCoordinateYTest2.pixelColToCoordinate(0);
+		double output = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,0);
 		assertEquals(-1.0, output, 0.0001);
-		double output2 = pixelToCoordinateYTest2.pixelColToCoordinate(512);
-		assertEquals(1.0, output, 0.0001);
-		double output3 = pixelToCoordinateYTest2.pixelColToCoordinate(512);
-		assertEquals(, output, 0.0001);
+		double output2 = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,512);
+		assertEquals(1.0, output2, 0.0001);
+		double output3 = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,512);
+		//assertEquals(, output, 0.0001);
 	}
 	
 	@Test
-	public void pixelToCoordinateYTest3(){
+	public void pixelToCoordinateYTestBurning(){
+		double rangeStart = -0.08;
+		double rangeEnd= 0.025;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateYTest3 = new generateFractal();
-		double output = pixelToCoordinateYTest3.pixelColToCoordinate(0);
+		double output = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,0);
 		assertEquals(-0.08, output, 0.0001);
-		double output2 = pixelToCoordinateYTest3.pixelColToCoordinate(512);
-		assertEquals(-0.025, output, 0.0001);
-		double output3 = pixelToCoordinateYTest3.pixelColToCoordinate(512);
-		assertEquals(, output, 0.0001);
+		double output2 = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,512);
+		assertEquals(0.025, output2, 0.0001);
+		double output3 = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,512);
+		//assertEquals(, output, 0.0001);
 	}
 	
 	@Test
-	public void pixelToCoordinateYTest4(){
+	public void pixelToCoordinateYTestMultibrot(){
+		double rangeStart = -1.3;
+		double rangeEnd= 1.3;
+		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
+		
 		generateFractal pixelToCoordinateYTest4 = new generateFractal();
-		double output = pixelToCoordinateYTest4.pixelColToCoordinate(0);
+		double output = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,0);
 		assertEquals(-1.3, output, 0.0001);
-		double output2 = pixelToCoordinateYTest4.pixelColToCoordinate(512);
-		assertEquals(1.3, output, 0.0001);
-		double output3 = pixelToCoordinateYTest4.pixelColToCoordinate(512);
-		assertEquals(, output, 0.0001);
+		double output2 = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,512);
+		assertEquals(1.3, output2, 0.0001);
+		double output3 = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,512);
+		//assertEquals(, output, 0.0001);
 	}
+	
+	
 }
