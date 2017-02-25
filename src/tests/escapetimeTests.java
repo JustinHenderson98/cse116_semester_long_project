@@ -10,7 +10,7 @@ import code.generateFractal;
 public class escapetimeTests {
 	
 	@Test
-	public void mandlebrotTest(){
+	public void mandlebrotNeverExceedTest(){
 		generateFractal mandlebrotTest = new generateFractal();
 		doublePoint p1 = new doublePoint(); 
 		p1.x = 0.3207031250000001;
@@ -20,7 +20,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void juliaTest(){
+	public void juliaNeverExceedTest(){
 		generateFractal juliaTest = new generateFractal();
 		doublePoint p2 = new doublePoint();
 		p2.x = 1.0492187499999897;
@@ -30,7 +30,7 @@ public class escapetimeTests {
 	}
 
 	@Test
-	public void burningshipTest(){
+	public void burningshipNeverExceedTest(){
 		generateFractal burningshipTest = new generateFractal();
 		doublePoint p3 = new doublePoint();
 		p3.x = -1.7443359374999874;
@@ -40,7 +40,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void multibrotTest(){
+	public void multibrotNeverExceedTest(){
 		generateFractal multibrotTest = new generateFractal();
 		doublePoint p4 = new doublePoint();
 		p4.x = 0.5859375;
@@ -50,7 +50,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void mandlebrotTest2(){
+	public void mandlebrotExceedTest(){
 		generateFractal mandlebrotTest2 = new generateFractal();
 		doublePoint p6 = new doublePoint();
 		p6.x = 0.3207031250000001;
@@ -60,7 +60,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void juliaTest2(){
+	public void juliaExceedTest(){
 		generateFractal juliaTest2 = new generateFractal();
 		doublePoint p5 = new doublePoint();
 		p5.x = 1.0492187499999897;
@@ -70,7 +70,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void multibrotTest2(){
+	public void multibrotExceedTest(){
 		generateFractal multibrotTest2 = new generateFractal();
 		doublePoint p7 = new doublePoint();
 		p7.x = 0.5859375;
@@ -80,7 +80,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void burningshipTest3(){
+	public void burningshipTestNoZeroOrOne(){
 		generateFractal burningshipTest3 = new generateFractal();
 		int[][] output = burningshipTest3.genFractal(3);
 		for (int i = 0; i < output.length; i++) {
@@ -93,7 +93,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void return2darray(){
+	public void return2DArrayOfSize512(){
 		generateFractal return2darray = new generateFractal();
 		int[][] array = return2darray.genFractal(1);
 		assertEquals(512, array.length);
@@ -112,7 +112,7 @@ public class escapetimeTests {
 		assertEquals(512, array[0].length);
 	}
 	@Test
-	public void pixelToCoordinateXTestMandlebrot(){
+	public void pixelRowToCoordinateMandlebrotTest(){
 		double rangeStart = -2.15;
 		double rangeEnd= 0.6;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -127,7 +127,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateXTestJulia(){
+	public void pixelRowToCoordinateJuliaTest(){
 		double rangeStart = -1.7;
 		double rangeEnd= 1.7;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -140,7 +140,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateXTestBurning(){
+	public void pixelRowToCoordinateBurningTest(){
 		double rangeStart = -1.8;
 		double rangeEnd= -1.7;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -153,7 +153,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateXTestMultibrot(){
+	public void pixelRowToCoordinateMultibrotTest(){
 		double rangeStart = -1.0;
 		double rangeEnd= 1.0;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -166,7 +166,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateYTestMandlebrot(){
+	public void pixelColToCoordinateMandlebrotTest(){
 		double rangeStart = -1.3;
 		double rangeEnd= 1.3;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -179,7 +179,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateYTestJulia(){
+	public void pixelColToCoordinateJuliaTest(){
 		double rangeStart = -1.0;
 		double rangeEnd= 1.0;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -192,7 +192,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateYTestBurning(){
+	public void pixeColToCoordinateBurningTest(){
 		double rangeStart = -0.08;
 		double rangeEnd= 0.025;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
@@ -205,7 +205,7 @@ public class escapetimeTests {
 	}
 	
 	@Test
-	public void pixelToCoordinateYTestMultibrot(){
+	public void pixelColToCoordinateMultibrotTest(){
 		double rangeStart = -1.3;
 		double rangeEnd= 1.3;
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);

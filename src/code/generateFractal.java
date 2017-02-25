@@ -1,5 +1,6 @@
 package code;
 /**
+ * class that will generate fractals in either the Mandlebrot Set, Julia Set, Burning Ship Set, or the Multibrot Set.
  * 
  * @author Justin Henderson
  * @author Kunku Wu
@@ -9,17 +10,18 @@ package code;
  */
 public class generateFractal {
 	/**
+	 * will generate a two-dimmensional array containing integers from 0 to maxSteps. With each coordinate of the array translating to the escape time of a coordinate on the Cartesian plane 
 	 * 
-	 * @param fractalType int 1-4 determines if Mandlebrot, Julia, burning Ship, Multibrot
-	 * @param fractalWidth num of rows in the fractal array
-	 * @param FractalHeight num of columns in the fractal array 
-	 * @param xRangeStart 
-	 * @param xRangeEnd
-	 * @param yRangeStart
-	 * @param yRangeEnd
-	 * @param escapeDistance
-	 * @param maxSteps
-	 * @return
+	 * @param fractalType integer 1 through 4 determines if set is Mandlebrot, Julia, burning Ship, or Multibrot.
+	 * @param fractalWidth integer number ofpixels per row in the fractal array.
+	 * @param FractalHeight integer number of pixels per column in the fractal array. 
+	 * @param xRangeStart double x-coordinate value that starts where the escape time is calculated.
+	 * @param xRangeEnd double x-coordinate value that ends where the escape time is calculated.
+	 * @param yRangeStart double y-coordinate value that starts where the escape time is calculated.
+	 * @param yRangeEnd double y-coordinate value that endss where the escape time is calculated.
+	 * @param escapeDistance integer distance above which we expect the series will eventually reach infinity.
+	 * @param maxSteps integer max number of steps the escape-time algorithm will be considered.
+	 * @return int[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
 	 */
 	
 	public int[][] genFractal(int fractalType, int fractalWidth, int fractalHeight,double xRangeStart, double xRangeEnd, double yRangeStart,double yRangeEnd, int escapeDistance, int maxSteps){
@@ -32,29 +34,25 @@ public class generateFractal {
 		currentXY.x = xRangeStart;
 		currentXY.y = yRangeStart;
 		
-	//	double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		for(int cols = 0; cols<fractalHeight; cols++){
 			pixelColToCoordinate(yRangeStart, ySpace, cols);
-			//currentXY.y = yRangeStart + ySpace * cols;// increases the y coordinate by yspace
-			//currentXY.x = xRangeStart;
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
 				pixelRowToCoordinate(xRangeStart, xSpace, rows);
-				//currentXY.x = xRangeStart + xSpace * rows; //increases the x coordinate by xspace
-
-				
 				
 				fractalSet[cols][rows] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
 			}
 		}
 		
-		
-		
-		
-		
 		return fractalSet;	
 	}
 	
+	/**
+	 * Overloaded method to allow default values to be used.
+	 * 
+	 * @param fractalType integer value 1 through 4 determines if set is Mandlebrot, Julia, burning Ship, or Multibrot.
+	 * @returnint[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
+	 */
 	public int[][] genFractal(int fractalType){
 		int width = 512; //default width
 		int height = 512; //default height
@@ -99,11 +97,27 @@ public class generateFractal {
 		return genFractal(fractalType, width, height, xRangeStart, xRangeEnd,  yRangeStart, yRangeEnd, escapeDistance, maxSteps);
 	}
 
+		/**
+		 * calculates the distance between(x,y) and (0,0).
+		 * 
+		 * @param double x coordinate
+		 * @param double y coordniate
+		 * @return
+		 */
 		public double distance(double x,double y){
 			//calculates the distance from point x,y from the origin
 			return Math.pow((Math.pow(x, 2.0) + Math.pow(y, 2.0)), 0.5);
-			
 		}
+		
+		/**
+		 * calculates the escape time for a given coordinate on the Cartesian plane
+		 * 
+		 * @param fractalType integer 1 through 4 determines if set is Mandlebrot, Julia, burning Ship, or Multibrot.
+		 * @param currXY doublePoint value that contains the current x and y values.
+		 * @param escapeDistance integer distance above which we expect the series will eventually reach infinity.
+		 * @param maxSteps integer max number of steps the escape-time algorithm will be considered.
+		 * @return passes integer that is between 0 and maxSteps.
+		 */
 		public int escapeTime(int fractalType, doublePoint currXY, int escapeDistance, int maxSteps){
 			doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
 			XYCalc = currXY;
@@ -121,14 +135,27 @@ public class generateFractal {
 			
 			return passes;
 		}
-		
-		//converts the current row in the 2d array to the curent pixel
-				public double pixelRowToCoordinate(double xRangeStart, double xSpace, int rows ){
+		/**
+		 * translates the current row to a coordinate on the Cartesian plane.
+		 * 
+		 * @param xRangeStart double x-coordinate value that starts where the escape time is calculated.
+		 * @param xSpace double value for the space between each x coordinate.
+		 * @param rows integer current row of the array.
+		 * @return double value for the x-coordinate.
+		 */
+		public double pixelRowToCoordinate(double xRangeStart, double xSpace, int rows ){
 					return xRangeStart + xSpace * rows;
 				}
 				
-				//converts the current column in the 2d array to the curent pixel
-				public double pixelColToCoordinate(double yRangeStart, double ySpace,int cols ){
+		/**
+		 * Same as method above(dublicate code used for legibility)
+		 * 
+		 * @param yRangeStart double y-coordinate value that starts where the escape time is calculated.
+		 * @param ySpace double value for the space between each y coordinate.
+		 * @param cols integer value of the current column in the array.
+		 * @return double value for the y-coordinate.
+		 */
+		public double pixelColToCoordinate(double yRangeStart, double ySpace,int cols ){
 					return yRangeStart + ySpace * cols;
 				}
 }
