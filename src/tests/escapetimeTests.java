@@ -137,8 +137,6 @@ public class escapetimeTests {
 		assertEquals(-1.7, output, 0.00001);
 		double output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,512);
 		assertEquals(1.7, output2, 0.00001);
-	    double output3 = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,512);
-		//assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
@@ -152,8 +150,6 @@ public class escapetimeTests {
 		assertEquals(-1.8, output, 0.00001);
 		double output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,512);
 		assertEquals(-1.7, output2, 0.00001);
-		double output3 = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,512);
-		//assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
@@ -167,8 +163,6 @@ public class escapetimeTests {
 		assertEquals(-1.0, output, 0.00001);
 		double output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,512);
 		assertEquals(1.0, output2, 0.00001);
-		double output3 = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,512);
-		//assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
@@ -182,8 +176,6 @@ public class escapetimeTests {
 		assertEquals(-1.3, output, 0.0001);
 		double output2 = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,512);
 		assertEquals(1.3, output2, 0.0001);
-		double output3 = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,512);
-		//assertEquals(, output, 0.0001);
 	}
 	
 	@Test
@@ -197,8 +189,6 @@ public class escapetimeTests {
 		assertEquals(-1.0, output, 0.0001);
 		double output2 = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,512);
 		assertEquals(1.0, output2, 0.0001);
-		double output3 = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,512);
-		//assertEquals(, output, 0.0001);
 	}
 	
 	@Test
@@ -212,8 +202,6 @@ public class escapetimeTests {
 		assertEquals(-0.08, output, 0.0001);
 		double output2 = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,512);
 		assertEquals(0.025, output2, 0.0001);
-		double output3 = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,512);
-		//assertEquals(, output, 0.0001);
 	}
 	
 	@Test
@@ -227,8 +215,6 @@ public class escapetimeTests {
 		assertEquals(-1.3, output, 0.0001);
 		double output2 = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,512);
 		assertEquals(1.3, output2, 0.0001);
-		double output3 = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,512);
-		//assertEquals(, output, 0.0001);
 	}
 	
 	
