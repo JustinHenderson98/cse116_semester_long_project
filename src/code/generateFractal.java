@@ -1,5 +1,12 @@
 package code;
-
+/**
+ * 
+ * @author Justin Henderson
+ * @author Kunku Wu
+ * @author Ethan Gagne
+ * @author Ben Conomos
+ *
+ */
 public class generateFractal {
 	/**
 	 * 
