@@ -2,6 +2,19 @@ package code;
 
 public class generateFractal {
 	
+	private int _fractalType;
+	private int _fractalWidth;
+	private int _fractalHeight;
+	private double _xRangeStart;
+	private double _xRangeEnd;
+	private double _yRangeStart;
+	private double _yRangeEnd;
+	private int _escapeDistance;
+	private int _maxSteps;
+	
+	private double _ySpace;
+	private double _xSpace;
+	
 	/**
 	 * 
 	 * @param fractalType int 1-4 determines if Mandlebrot, Julia, burning Ship, Multibrot
@@ -18,23 +31,34 @@ public class generateFractal {
 	
 	public int[][] genFractal(int fractalType, int fractalWidth, int fractalHeight,double xRangeStart, double xRangeEnd, double yRangeStart,double yRangeEnd, int escapeDistance, int maxSteps){
 		
-		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
-		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
-		double xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
-		double ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
+		 _fractalType = fractalType;
+		 _fractalWidth = fractalWidth;
+		 _fractalHeight = fractalHeight;
+		 _xRangeStart = xRangeStart;
+		 _xRangeEnd = xRangeEnd;
+		 _yRangeStart = xRangeStart;
+		  _yRangeEnd = yRangeEnd;
+		 _escapeDistance = escapeDistance;
+		 _maxSteps = maxSteps;
 		
-		currentXY.x = xRangeStart;
-		currentXY.y = yRangeStart;
+		
+		int[][] fractalSet = new int[_fractalWidth][_fractalHeight]; //creates new 2d array to hold each pixel value
+		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
+		 _xSpace = Math.abs( (_xRangeEnd -  _xRangeStart) / _fractalWidth);//calculates the padding between each x-coordinate
+		 _ySpace = Math.abs( (_yRangeEnd -  _yRangeStart) / _fractalHeight);//calculates the padding between each y-coordinate
+		
+		currentXY.x = _xRangeStart;
+		currentXY.y = _yRangeStart;
 		
 	//	double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		for(int cols = 0; cols<fractalHeight; cols++){
-			currentXY.y = pixelColToCoordinate(ySpace, ySpace, cols);
+			currentXY.y = pixelColToCoordinate(cols);
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
-				currentXY.x = pixelRowToCoordinate(xSpace, xSpace, rows);
+				currentXY.x = pixelRowToCoordinate(rows);
 				
 				
-				fractalSet[cols][rows] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
+				fractalSet[cols][rows] = escapeTime(currentXY);
 			}
 		}
 		
@@ -94,7 +118,7 @@ public class generateFractal {
 			return Math.pow((Math.pow(x, 2.0) + Math.pow(y, 2.0)), 0.5);
 			
 		}
-		public int escapeTime(int fractalType, doublePoint currXY, int escapeDistance, int maxSteps){
+		public int escapeTime(doublePoint currXY){
 			doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
 			XYCalc = currXY;
 			
@@ -102,9 +126,9 @@ public class generateFractal {
 			 double dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
 			int passes = 0;
 			
-			while(dist <= escapeDistance && passes < maxSteps ){
+			while(dist <= _escapeDistance && passes < _maxSteps ){
 				update update = new update();//can probably move this code outside of loop for better run times
-				XYCalc = update.updateXY(fractalType, XYCalc, currXY);
+				XYCalc = update.updateXY(_fractalType, XYCalc, currXY);
 				passes++;		
 				dist = distance(XYCalc.x,XYCalc.y) ;
 			}
@@ -114,12 +138,19 @@ public class generateFractal {
 		
 		
 		//converts the current row in the 2d array to the curent pixel
-		public double pixelRowToCoordinate(double xRangeStart, double xSpace, int rows ){
-			return xRangeStart + xSpace * rows;
+		public double pixelRowToCoordinate(int rows ){
+			return _xRangeStart + _xSpace * rows;
 		}
 		
 		//converts the current column in the 2d array to the curent pixel
-		public double pixelColToCoordinate(double yRangeStart, double ySpace, int cols ){
-			return yRangeStart + ySpace * cols;
+		public double pixelColToCoordinate(int cols ){
+			return _yRangeStart + _ySpace * cols;
+		}
+		
+		public int xCoordinateToPixelRow(double xCoordinate, double xRangeStart, double xSpace){
+			
+			return 0;
+			
 		}
 }
+

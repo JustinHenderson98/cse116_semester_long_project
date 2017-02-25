@@ -2,12 +2,13 @@ package tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import code.doublePoint;
 import code.generateFractal;
 
-public class escapetimeTests {
+public class escapetimeTests {	
 	
 	@Test
 	public void mandlebrotTest(){
@@ -15,7 +16,7 @@ public class escapetimeTests {
 		doublePoint p1 = new doublePoint(); 
 		p1.x = 0.3207031250000001;
 		p1.y = -0.07109374999999386;
-		int output = mandlebrotTest.escapeTime(1, p1, 2, 255);
+		int output = fractal.escapeTime(1, p1, 2, 255);
 		assertEquals(255, output);
 	}
 	
