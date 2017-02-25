@@ -1,6 +1,7 @@
 package code;
 
 public class generateFractal {
+	
 	/**
 	 * 
 	 * @param fractalType int 1-4 determines if Mandlebrot, Julia, burning Ship, Multibrot
@@ -27,12 +28,10 @@ public class generateFractal {
 		
 	//	double dist = distance(currentXY.x, currentXY.y);//sets dist equal to the distance between the current x and y and the origin
 		for(int cols = 0; cols<fractalHeight; cols++){
-			currentXY.y = yRangeStart + ySpace * cols;// increases the y coordinate by yspace
-			currentXY.x = xRangeStart;
+			currentXY.y = pixelColToCoordinate(ySpace, ySpace, cols);
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
-				currentXY.x = xRangeStart + xSpace * rows; //increases the x coordinate by xspace
-
+				currentXY.x = pixelRowToCoordinate(xSpace, xSpace, rows);
 				
 				
 				fractalSet[cols][rows] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
@@ -111,5 +110,16 @@ public class generateFractal {
 			}
 			
 			return passes;
+		}
+		
+		
+		//converts the current row in the 2d array to the curent pixel
+		public double pixelRowToCoordinate(double xRangeStart, double xSpace, int rows ){
+			return xRangeStart + xSpace * rows;
+		}
+		
+		//converts the current column in the 2d array to the curent pixel
+		public double pixelColToCoordinate(double yRangeStart, double ySpace, int cols ){
+			return yRangeStart + ySpace * cols;
 		}
 }
