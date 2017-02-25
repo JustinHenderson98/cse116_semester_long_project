@@ -116,51 +116,51 @@ public class escapetimeTests {
 	@Test
 	public void pixelToCoordinateXTest1(){
 		generateFractal pixelToCoordinateXTest1 = new generateFractal();
-		double output = pixelToCoordinateXTest1.pixelRowToCoordinate(512);
+		double output = pixelToCoordinateXTest1.pixelRowToCoordinate(0);
 		assertEquals(-2.15, output, 0.00001);
-		int output2 = pixelToCoordinateXTest1.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest1.pixelRowToCoordinate(512);
 		assertEquals(0.6, output2, 0.00001);
-		int output3 = pixelToCoordinateXTest1.pixelRowToCoordinate(512);
+		double output3 = pixelToCoordinateXTest1.pixelRowToCoordinate(206);
 		assertEquals(-1.043554688, output3, 0.00001);
 	}
 	
 	@Test
 	public void pixelToCoordinateXTest2(){
 		generateFractal pixelToCoordinateXTest2 = new generateFractal();
-		double output = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
+		double output = pixelToCoordinateXTest2.pixelRowToCoordinate(0);
 		assertEquals(-1.7, output, 0.00001);
-		int output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
 		assertEquals(1.7, output2, 0.00001);
-		int output3 = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
+	    double output3 = pixelToCoordinateXTest2.pixelRowToCoordinate(512);
 		assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
 	public void pixelToCoordinateXTest3(){
 		generateFractal pixelToCoordinateXTest3 = new generateFractal();
-		double output = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
+		double output = pixelToCoordinateXTest3.pixelRowToCoordinate(0);
 		assertEquals(-1.8, output, 0.00001);
-		int output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
 		assertEquals(-1.7, output2, 0.00001);
-		int output3 = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
+		double output3 = pixelToCoordinateXTest3.pixelRowToCoordinate(512);
 		assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
 	public void pixelToCoordinateXTest4(){
 		generateFractal pixelToCoordinateXTest4 = new generateFractal();
-		double output = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
+		double output = pixelToCoordinateXTest4.pixelRowToCoordinate(0);
 		assertEquals(-1.0, output, 0.00001);
-		int output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
+		double output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
 		assertEquals(1.0, output2, 0.00001);
-		int output3 = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
+		double output3 = pixelToCoordinateXTest4.pixelRowToCoordinate(512);
 		assertEquals(, output3, 0.00001);
 	}
 	
 	@Test
 	public void pixelToCoordinateYTest1(){
 		generateFractal pixelToCoordinateYTest1 = new generateFractal();
-		double output = pixelToCoordinateYTest1.pixelColToCoordinate(512);
+		double output = pixelToCoordinateYTest1.pixelColToCoordinate(0);
 		assertEquals(-1.3, output, 0.0001);
 		double output2 = pixelToCoordinateYTest1.pixelColToCoordinate(512);
 		assertEquals(1.3, output, 0.0001);
@@ -171,7 +171,7 @@ public class escapetimeTests {
 	@Test
 	public void pixelToCoordinateYTest2(){
 		generateFractal pixelToCoordinateYTest2 = new generateFractal();
-		double output = pixelToCoordinateYTest2.pixelColToCoordinate(512);
+		double output = pixelToCoordinateYTest2.pixelColToCoordinate(0);
 		assertEquals(-1.0, output, 0.0001);
 		double output2 = pixelToCoordinateYTest2.pixelColToCoordinate(512);
 		assertEquals(1.0, output, 0.0001);
@@ -182,7 +182,7 @@ public class escapetimeTests {
 	@Test
 	public void pixelToCoordinateYTest3(){
 		generateFractal pixelToCoordinateYTest3 = new generateFractal();
-		double output = pixelToCoordinateYTest3.pixelColToCoordinate(512);
+		double output = pixelToCoordinateYTest3.pixelColToCoordinate(0);
 		assertEquals(-0.08, output, 0.0001);
 		double output2 = pixelToCoordinateYTest3.pixelColToCoordinate(512);
 		assertEquals(-0.025, output, 0.0001);
@@ -193,7 +193,7 @@ public class escapetimeTests {
 	@Test
 	public void pixelToCoordinateYTest4(){
 		generateFractal pixelToCoordinateYTest4 = new generateFractal();
-		double output = pixelToCoordinateYTest4.pixelColToCoordinate(512);
+		double output = pixelToCoordinateYTest4.pixelColToCoordinate(0);
 		assertEquals(-1.3, output, 0.0001);
 		double output2 = pixelToCoordinateYTest4.pixelColToCoordinate(512);
 		assertEquals(1.3, output, 0.0001);
