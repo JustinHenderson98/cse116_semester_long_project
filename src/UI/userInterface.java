@@ -28,11 +28,11 @@ public class userInterface {
 		_globalPanel = new JPanel();
 		_globalPanel.setLayout(new GridLayout(1,1));
 		_frame = new JFrame("CSE116IsBomb_B1");
-		_frame.setBounds(400,400,300,300);
 		_frame.setMenuBar(_menu.getMenuBar());
 		_globalPanel.add(_display);
 		_frame.add(_globalPanel);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		_frame.pack();
 		_frame.setVisible(true);
 		//Temporary - Trying to figure out color models
 		Color[] colors = {Color.red, Color.green, Color.blue,
