@@ -1,4 +1,7 @@
 package code;
+
+import UI.userInterface;
+
 /**
  * class that will generate fractals in either the Mandlebrot Set, Julia Set, Burning Ship Set, or the Multibrot Set.
  * 
@@ -9,6 +12,12 @@ package code;
  *
  */
 public class generateFractal {
+	private userInterface _ui;
+	public generateFractal(userInterface ui) {
+		_ui = ui;
+	}
+	public generateFractal() {}
+
 	/**
 	 * will generate a two-dimmensional array containing integers from 0 to maxSteps. With each coordinate of the array translating to the escape time of a coordinate on the Cartesian plane 
 	 * 

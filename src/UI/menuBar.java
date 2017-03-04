@@ -19,17 +19,17 @@ public class menuBar {
                 colorSch1,colorSch2;  
     public menuBar()  
     {  
-        myFrame=new Frame("CSEisBOMB Menu");  
-        myFrame.setBounds(400,400,300,300);  
+        //myFrame=new Frame("CSEisBOMB Menu");  
+        //myFrame.setBounds(400,400,300,300);  
           
         //添加关闭事件  
-        myFrame.addWindowListener(new WindowAdapter()  
-        {  
-            public void windowClosing(WindowEvent e)  
-            {  
-                System.exit(0);  
-            }  
-        });  
+        //myFrame.addWindowListener(new WindowAdapter()  
+        //{  
+        //    public void windowClosing(WindowEvent e)  
+        //    {  
+        //        System.exit(0);  
+        //    }  
+        //});  
         //初始菜单项  
         menubar=new MenuBar();  
         
@@ -77,9 +77,12 @@ public class menuBar {
         color.add(colorSch2);  
         menubar.add(color);  
         //set menuBar  
-        myFrame.setMenuBar(menubar);            
-        myFrame.setVisible(true);  
+        //myFrame.setMenuBar(menubar);            
+        //myFrame.setVisible(true);  
     }  
+    public MenuBar getMenuBar() {
+    	return menubar;
+    }
     public static void main(String[] args)
     {  
         new menuBar();  
