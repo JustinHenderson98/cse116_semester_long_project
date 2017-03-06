@@ -49,7 +49,7 @@ public class generateFractal {
 			for(int rows = 0; rows <fractalWidth;rows++){ 
 				currentXY.x = pixelRowToCoordinate(xRangeStart, xSpace, rows);
 				
-				fractalSet[cols][rows] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
+				fractalSet[rows][cols] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
 			}
 		}
 		
