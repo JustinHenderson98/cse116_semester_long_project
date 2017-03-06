@@ -44,10 +44,10 @@ public class generateFractal {
 		currentXY.y = yRangeStart;
 		
 		for(int cols = 0; cols<fractalHeight; cols++){
-			pixelColToCoordinate(yRangeStart, ySpace, cols);
+			currentXY.y =pixelColToCoordinate(yRangeStart, ySpace, cols);
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
-				pixelRowToCoordinate(xRangeStart, xSpace, rows);
+				currentXY.x = pixelRowToCoordinate(xRangeStart, xSpace, rows);
 				
 				fractalSet[cols][rows] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
 			}
