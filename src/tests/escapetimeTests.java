@@ -82,7 +82,8 @@ public class escapetimeTests {
 	@Test
 	public void burningshipTestNoZeroOrOne(){
 		generateFractal burningshipTest3 = new generateFractal();
-		int[][] output = burningshipTest3.genFractal(3);
+		burningshipTest3.set__fractalType(3);
+		int[][] output = burningshipTest3.genFractal();
 		for (int i = 0; i < output.length; i++) {
 			for (int j = 0; j < output.length; j++) {
 				if(1==output[i][j] || output[i][j] == 0){
@@ -95,19 +96,23 @@ public class escapetimeTests {
 	@Test
 	public void return2DArrayOfSize512(){
 		generateFractal return2darray = new generateFractal();
-		int[][] array = return2darray.genFractal(1);
+		return2darray.set__fractalType(1);
+		int[][] array = return2darray.genFractal();
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 		
-		array = return2darray.genFractal(2);
+		return2darray.set__fractalType(2);
+		array = return2darray.genFractal();
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 		
-		array = return2darray.genFractal(3);
+		return2darray.set__fractalType(3);
+		array = return2darray.genFractal();
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 		
-		array = return2darray.genFractal(4);
+		return2darray.set__fractalType(4);
+		array = return2darray.genFractal();
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 	}
