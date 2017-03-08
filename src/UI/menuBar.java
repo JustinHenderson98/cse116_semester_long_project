@@ -7,7 +7,9 @@ import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;  
-import java.awt.event.WindowEvent;  
+import java.awt.event.WindowEvent;
+
+import code.colorModels;  
 
 public class menuBar {  
     Frame myFrame;  
@@ -65,7 +67,7 @@ public class menuBar {
         for (int i = 0; i < nc; i++) {
         	String s =  "color scheme " + String.valueOf(i+1);
         	colorSch[i] = new MenuItem(s);
-        	shiftFraOrColor(colorSch[i], i, 1);
+        	shiftFraOrColor(colorSch[i], i + 1, 1);
         	color.add(colorSch[i]);
         }
         menubar.add(color);
@@ -88,7 +90,8 @@ public class menuBar {
 					
 				}
 				else {
-					
+					colorModels cM = new colorModels();
+					cM.setColorModel(index);
 				}
 			}
         });

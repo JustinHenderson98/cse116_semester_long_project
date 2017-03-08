@@ -80,6 +80,45 @@ public class escapetimeTests {
 	}
 	
 	@Test
+	public void mandlebrotExceedTest2(){
+		generateFractal mandlebrotTest2 = new generateFractal();
+		doublePoint p6 = new doublePoint();
+		p6.x = 0.46007827788650374;
+		p6.y = -0.3383561643835661;
+		int output = mandlebrotTest2.escapeTime(1, p6, 3, 10);
+		assertEquals(10, output);
+	}
+	
+	@Test
+	public void juliaExceedTest2(){
+		generateFractal juliaTest2 = new generateFractal();
+		doublePoint p5 = new doublePoint();
+		p5.x = 1.4538160469667272;
+		p5.y = -0.13502935420743645;
+		int output = juliaTest2.escapeTime(2, p5, 3, 10);
+		assertEquals(10, output);
+	}
+	
+	@Test
+	public void burningshipExceedTest2(){
+		generateFractal burningshipTest2 = new generateFractal();
+		doublePoint p3 = new doublePoint();
+		p3.x =  -1.6999999999999802;
+		p3.y = 0.0030136986301371603;
+		int output = burningshipTest2.escapeTime(3, p3, 3, 10);
+		assertEquals(10, output);
+	}
+	@Test
+	public void multibrotExceedTest2(){
+		generateFractal multibrotTest2 = new generateFractal();
+		doublePoint p7 = new doublePoint();
+		p7.x = 0.7025440313111545;
+		p7.y = -0.5520547945205528;
+		int output = multibrotTest2.escapeTime(4, p7, 3, 10);
+		assertEquals(10, output);
+	}
+	
+	@Test
 	public void burningshipTestNoZeroOrOne(){
 		generateFractal burningshipTest3 = new generateFractal();
 		burningshipTest3.set__fractalType(3);
