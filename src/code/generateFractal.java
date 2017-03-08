@@ -13,6 +13,7 @@ import UI.userInterface;
  */
 public class generateFractal {
 	private userInterface _ui;
+	private int __escapeDistance = 2;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
 	}
@@ -28,12 +29,12 @@ public class generateFractal {
 	 * @param xRangeEnd double x-coordinate value that ends where the escape time is calculated.
 	 * @param yRangeStart double y-coordinate value that starts where the escape time is calculated.
 	 * @param yRangeEnd double y-coordinate value that endss where the escape time is calculated.
-	 * @param escapeDistance integer distance above which we expect the series will eventually reach infinity.
+	 * @param _escapeDistance integer distance above which we expect the series will eventually reach infinity.
 	 * @param maxSteps integer max number of steps the escape-time algorithm will be considered.
 	 * @return int[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
 	 */
 	
-	public int[][] genFractal(int fractalType, int fractalWidth, int fractalHeight,double xRangeStart, double xRangeEnd, double yRangeStart,double yRangeEnd, int escapeDistance, int maxSteps){
+	public int[][] genFractal(int fractalType, int fractalWidth, int fractalHeight,double xRangeStart, double xRangeEnd, double yRangeStart,double yRangeEnd, int maxSteps){
 		
 		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
 		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
@@ -49,7 +50,7 @@ public class generateFractal {
 			for(int rows = 0; rows <fractalWidth;rows++){ 
 				currentXY.x = pixelRowToCoordinate(xRangeStart, xSpace, rows);
 				
-				fractalSet[rows][cols] = escapeTime(fractalType, currentXY, escapeDistance, maxSteps);
+				fractalSet[rows][cols] = escapeTime(fractalType, currentXY, __escapeDistance, maxSteps);
 			}
 		}
 		
@@ -65,7 +66,7 @@ public class generateFractal {
 	public int[][] genFractal(int fractalType){
 		int width = 512; //default width
 		int height = 512; //default height
-		int escapeDistance = 2; //default escape distance
+		//int _escapeDistance = 2; //default escape distance
 		int maxSteps = 255; //default max steps
 		
 		double xRangeStart =0;//initialize 
@@ -103,7 +104,7 @@ public class generateFractal {
 			 yRangeEnd = 1.3;
 			
 		}
-		return genFractal(fractalType, width, height, xRangeStart, xRangeEnd,  yRangeStart, yRangeEnd, escapeDistance, maxSteps);
+		return genFractal(fractalType, width, height, xRangeStart, xRangeEnd,  yRangeStart, yRangeEnd, maxSteps);
 	}
 
 		/**
@@ -123,11 +124,11 @@ public class generateFractal {
 		 * 
 		 * @param fractalType integer 1 through 4 determines if set is Mandlebrot, Julia, burning Ship, or Multibrot.
 		 * @param currXY doublePoint value that contains the current x and y values.
-		 * @param escapeDistance integer distance above which we expect the series will eventually reach infinity.
+		 * @param _escapeDistance integer distance above which we expect the series will eventually reach infinity.
 		 * @param maxSteps integer max number of steps the escape-time algorithm will be considered.
 		 * @return passes integer that is between 0 and maxSteps.
 		 */
-		public int escapeTime(int fractalType, doublePoint currXY, int escapeDistance, int maxSteps){
+		public int escapeTime(int fractalType, doublePoint currXY, int _escapeDistance, int maxSteps){
 			doublePoint XYCalc = new doublePoint(); //doublePoint representing xCalc and yCalc; this is separate from the coordinates
 			XYCalc = currXY;
 			
@@ -135,7 +136,7 @@ public class generateFractal {
 			 double dist = distance(XYCalc.x, XYCalc.y);//sets dist equal to the distance between the current x and y and the origin
 			int passes = 0;
 			
-			while(dist <= escapeDistance && passes < maxSteps ){
+			while(dist <= _escapeDistance && passes < maxSteps ){
 				update update = new update();//can probably move this code outside of loop for better run times
 				XYCalc = update.updateXY(fractalType, XYCalc, currXY);
 				passes++;		
@@ -167,4 +168,7 @@ public class generateFractal {
 		public double pixelColToCoordinate(double yRangeStart, double ySpace,int cols ){
 					return yRangeStart + ySpace * cols;
 				}
+		public void escapeDistanceSetter(int i){
+			__escapeDistance = i;
+		}
 }

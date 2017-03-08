@@ -49,7 +49,7 @@ public class userInterface {
 			    IndexColorModel cm = new IndexColorModel(3, 8, reds, greens, blues);
 		//temporary
 		_display.setIndexColorModel(cm);
-		_display.updateImage(_model.genFractal(1));
+		_display.updateImage(_model.genFractal(4));
 		//something seems wrong with GenFractal - need to take a look - FIXED 3/6/17
 		
 		
