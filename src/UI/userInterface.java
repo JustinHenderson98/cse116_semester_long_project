@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.image.IndexColorModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 import code.colorModels;
 import code.generateFractal;
@@ -38,7 +39,12 @@ public class userInterface {
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.pack();
 		_frame.setVisible(true);
+		JFrame ff = new JFrame();
+		 Object result = JOptionPane.showInputDialog(ff , "enter escape time");
 		update();
+		
+	
+		 
 		
 	}
 	public void update() {
