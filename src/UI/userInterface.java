@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.image.IndexColorModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import code.colorModels;
 import code.generateFractal;
 import edu.buffalo.fractal.FractalPanel;
 
@@ -21,7 +23,9 @@ public class userInterface {
 	private menuBar _menu;
 	private JPanel _globalPanel;
 	private FractalPanel _display;
+	private colorModels _colorModel;
 	public userInterface() {
+		_colorModel = new colorModels();
 		_model = new generateFractal(this);
 		_menu = new menuBar();
 		_display = new FractalPanel();
@@ -38,19 +42,8 @@ public class userInterface {
 		
 	}
 	public void update() {
-		Color[] colors = {Color.red, Color.green, Color.blue,
-			    Color.cyan, Color.magenta, Color.yellow,
-			    Color.white, Color.black};
-			    byte[] reds = new byte[8];
-			    byte[] greens = new byte[8];
-			    byte[] blues = new byte[8];
-			    for (int i = 0; i < colors.length; i++) {
-			      reds[i] = (byte) colors[i].getRed();
-			      greens[i] = (byte) colors[i].getGreen();
-			      blues[i] = (byte) colors[i].getBlue();
-			    }
-		IndexColorModel cm = new IndexColorModel(3, 8, reds, greens, blues);
+		_display.setIndexColorModel(_colorModel.getColorModel());
 		_display.updateImage(_model.genFractal());
-		_display.setIndexColorModel(cm);
+		
 	}
 }
