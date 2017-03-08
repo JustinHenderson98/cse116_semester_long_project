@@ -34,7 +34,10 @@ public class userInterface {
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.pack();
 		_frame.setVisible(true);
-		//Temporary - Trying to figure out color models
+		update();
+		
+	}
+	public void update() {
 		Color[] colors = {Color.red, Color.green, Color.blue,
 			    Color.cyan, Color.magenta, Color.yellow,
 			    Color.white, Color.black};
@@ -46,12 +49,8 @@ public class userInterface {
 			      greens[i] = (byte) colors[i].getGreen();
 			      blues[i] = (byte) colors[i].getBlue();
 			    }
-			    IndexColorModel cm = new IndexColorModel(3, 8, reds, greens, blues);
-		//temporary
+		IndexColorModel cm = new IndexColorModel(3, 8, reds, greens, blues);
+		_display.updateImage(_model.genFractal());
 		_display.setIndexColorModel(cm);
-		_display.updateImage(_model.genFractal(4));
-		//something seems wrong with GenFractal - need to take a look - FIXED 3/6/17
-		
-		
 	}
 }
