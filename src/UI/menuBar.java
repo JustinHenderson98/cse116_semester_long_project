@@ -16,40 +16,33 @@ public class menuBar {
     MenuItem open,save,line,exit,  
     		 fra1,fra2,  
     		 secFra1,secFra2,  
-                colorSch1,colorSch2;  
+             colorSch1,colorSch2;  
+    MenuItem[] fra;
+    MenuItem[] colorSch;
+    private int nf = 4; // # of Fractals
+    private int nc = 4; // # of Color schemes
     public menuBar()  
     {  
-        //myFrame=new Frame("CSEisBOMB Menu");  
-        //myFrame.setBounds(400,400,300,300);  
-          
-        //添加关闭事件  
-        //myFrame.addWindowListener(new WindowAdapter()  
-        //{  
-        //    public void windowClosing(WindowEvent e)  
-        //    {  
-        //        System.exit(0);  
-        //    }  
-        //});  
-        //初始菜单项  
-        menubar=new MenuBar();  
+    	fra = new MenuItem[nf];
+    	colorSch = new MenuItem[nc];
+    	
+        menubar = new MenuBar();  
         
-        file=new Menu("File");  
-        fractal=new Menu("Fractal");
+        file = new Menu("File");  
+        fractal = new Menu("Fractal");
         
-        editSon1=new Menu("Fractal Items"); //second menu if needed
+//        editSon1=new Menu("Fractal Items"); //second menu if needed
         
-        color=new Menu("Color");  
-        //editSon2=new Menu("Color Schemes"); second menu if needed   
+        color = new Menu("Color");  
 
-        open=new MenuItem("open");  
-        save=new MenuItem("save");  
-        line=new MenuItem("-");  
-        exit=new MenuItem("exit");
+        open = new MenuItem("open");  
+        save = new MenuItem("save");  
+        line = new MenuItem("-");  
+        exit = new MenuItem("exit");
         
         exit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				System.exit(0);
 			}
         });
@@ -58,34 +51,47 @@ public class menuBar {
         file.add(save);  
         file.add(line);  
         file.add(exit);  
-        menubar.add(file);  
-        fra1=new MenuItem("Fractal 1");  
-        fra2=new MenuItem("Fractal 2");  
-        fractal.add(fra1);  
-        fractal.add(fra2);
+        menubar.add(file);
         
-        secFra1=new MenuItem("Fractal 1");  
-        secFra2=new MenuItem("Fractal 2");  
-        editSon1.add(secFra1);  
-        editSon1.add(secFra2);  
-        fractal.add(editSon1);
         
-        menubar.add(fractal);  
-        colorSch1=new MenuItem("color scheme 1");  
-        colorSch2=new MenuItem("color scheme 2");  
-        color.add(colorSch1);  
-        color.add(colorSch2);  
-        menubar.add(color);  
-        //set menuBar  
-        //myFrame.setMenuBar(menubar);            
-        //myFrame.setVisible(true);  
-    }  
+        for (int i = 0; i < nf; i++) {
+        	String s =  "Fractal " + String.valueOf(i+1);
+        	fra[i] = new MenuItem(s);
+        	shiftFraOrColor(fra[i], i, -1);
+        	fractal.add(fra[i]);
+        }
+        menubar.add(fractal);
+        
+        for (int i = 0; i < nc; i++) {
+        	String s =  "color scheme " + String.valueOf(i+1);
+        	colorSch[i] = new MenuItem(s);
+        	shiftFraOrColor(colorSch[i], i, 1);
+        	color.add(colorSch[i]);
+        }
+        menubar.add(color);
+         
+    } 
+    
     public MenuBar getMenuBar() {
     	return menubar;
     }
-    public static void main(String[] args)
-    {  
-        new menuBar();  
-    }  
+    
+    // parameter myMenuItem: menu item need to add ActionListener
+    // parameter index: add the index-th condition
+    // parameter x: x<0 means fractal, x>=0 means color scheme
+    public void shiftFraOrColor(MenuItem myMenuItem, int index, int x) {
+    	myMenuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//TODO
+				if (x < 0) {
+					
+				}
+				else {
+					
+				}
+			}
+        });
+    }
   
 }
