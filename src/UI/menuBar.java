@@ -49,11 +49,21 @@ public class menuBar {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+				if(msg == null){
+					return;
+				}
 				int value = Integer.valueOf(msg);
+				while(value < 0){
+					msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+					if(msg == null){
+						return;
+					}
+					value = Integer.valueOf(msg);
+				}
 				ui._model.set_escapeDistance(value);
 				ui.update();
-				//JOptionPane.showMessageDialog(null, String.valueOf(ui._model._escapeDistance));
-				//the above line is just using for test, instead of writing a JUnit test
+				
+				
 			}
         });
         
