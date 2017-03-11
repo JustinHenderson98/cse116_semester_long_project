@@ -19,7 +19,7 @@ public class userInterface {
 	}  
 	
 	private JFrame _frame;
-	private generateFractal _model;
+	public generateFractal _model;
 	private menuBar _menu;
 	private JPanel _globalPanel;
 	private FractalPanel _display;
@@ -27,7 +27,7 @@ public class userInterface {
 	public userInterface() {
 		_colorModel = new colorModels();
 		_model = new generateFractal(this);
-		_menu = new menuBar();
+		_menu = new menuBar(this);
 		_display = new FractalPanel();
 		_globalPanel = new JPanel();
 		_globalPanel.setLayout(new GridLayout(1,1));
@@ -39,7 +39,6 @@ public class userInterface {
 		_frame.pack();
 		_frame.setVisible(true);
 		update();
-		
 	}
 	public void update() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
