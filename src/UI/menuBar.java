@@ -25,8 +25,10 @@ public class menuBar {
     MenuItem[] colorSch;
     private int nf = 4; // # of Fractals
     private int nc = 4; // # of Color schemes
+    private userInterface _ui;
     public menuBar(userInterface ui)  
     {  
+    	_ui = ui;
     	fra = new MenuItem[nf];
     	colorSch = new MenuItem[nc];
     	
@@ -60,8 +62,8 @@ public class menuBar {
 					}
 					value = Integer.valueOf(msg);
 				}
-				ui._model.set_escapeDistance(value);
-				ui.update();
+				_ui._model.set_escapeDistance(value);
+				_ui.update();
 				
 				
 			}
@@ -113,11 +115,13 @@ public class menuBar {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO
 				if (x < 0) {
-					
+					_ui._model.set__fractalType(index + 1);
+					_ui.update();
 				}
 				else {
 					colorModels cM = new colorModels();
 					cM.setColorModel(index);
+					
 				}
 			}
         });
