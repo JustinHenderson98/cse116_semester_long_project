@@ -9,21 +9,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;  
 import java.awt.event.WindowEvent;
 
+import javax.swing.JOptionPane;
+
 import code.colorModels;  
 
 public class menuBar {  
     Frame myFrame;  
     MenuBar menubar;  
-    Menu file,fractal,editSon1,editSon2,color;  
-    MenuItem open,save,line,exit,  
-    		 fra1,fra2,  
-    		 secFra1,secFra2,  
-             colorSch1,colorSch2;  
+    Menu file, fractal, editSon1, editSon2, color;  
+    MenuItem open, save, input, line, exit,  
+    		 fra1, fra2,  
+    		 secFra1, secFra2,  
+             colorSch1, colorSch2;  
     MenuItem[] fra;
     MenuItem[] colorSch;
     private int nf = 4; // # of Fractals
     private int nc = 4; // # of Color schemes
-    public menuBar()  
+    public menuBar(userInterface ui)  
     {  
     	fra = new MenuItem[nf];
     	colorSch = new MenuItem[nc];
@@ -38,9 +40,22 @@ public class menuBar {
         color = new Menu("Color");  
 
         open = new MenuItem("open");  
-        save = new MenuItem("save");  
+        save = new MenuItem("save");
+        input = new MenuItem("input");
         line = new MenuItem("-");  
         exit = new MenuItem("exit");
+        
+        input.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+				int value = Integer.valueOf(msg);
+				ui._model.set_escapeDistance(value);
+				ui.update();
+				//JOptionPane.showMessageDialog(null, String.valueOf(ui._model._escapeDistance));
+				//the above line is just using for test, instead of writing a JUnit test
+			}
+        });
         
         exit.addActionListener(new ActionListener() {
 			@Override
@@ -50,7 +65,8 @@ public class menuBar {
         });
         
         file.add(open);  
-        file.add(save);  
+        file.add(save);
+        file.add(input);
         file.add(line);  
         file.add(exit);  
         menubar.add(file);
