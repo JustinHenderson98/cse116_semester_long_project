@@ -1,27 +1,23 @@
 package code;
 
 import java.awt.Color;
+import java.awt.image.ColorModel;
 import java.awt.image.IndexColorModel;
 import java.util.ArrayList;
+
+import edu.buffalo.fractal.FractalPanel;
 
 public class colorModels {
 	int _cm = 1;
 	ArrayList<IndexColorModel> _cms = new ArrayList<IndexColorModel>(); 
 	public colorModels(){
 	//COLOR MODEL TEMPLATE
-	Color[] colors = {Color.red, Color.green, Color.blue,
-		    Color.cyan, Color.magenta, Color.yellow,
-		    Color.white, Color.black};
-		    byte[] reds = new byte[8];
-		    byte[] greens = new byte[8];
-		    byte[] blues = new byte[8];
-		    for (int i = 0; i < colors.length; i++) {
-		      reds[i] = (byte) colors[i].getRed();
-		      greens[i] = (byte) colors[i].getGreen();
-		      blues[i] = (byte) colors[i].getBlue();
-		    }
-	_cms.add(new IndexColorModel(3, 8, reds, greens, blues));
+	_cms.add(ColorModelFactory.createGrayColorModel(500));
 	//TEMPLATE
+	_cms.add(ColorModelFactory.createBluesColorModel(40));
+	
+	_cms.add(ColorModelFactory.createRainbowColorModel(30));
+
 	}
 	
 	public IndexColorModel getColorModel() {
