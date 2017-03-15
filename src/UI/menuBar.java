@@ -69,6 +69,7 @@ public class menuBar {
 				if (mer.find()) value = Integer.valueOf(msg);
 
 				while ( (!mer.find()) || ((value < 0) && (value > 32767)) )  {
+					JOptionPane.showMessageDialog(null, "Input should be an integer and no more than 32767. Press OK to re-enter.");
 					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
 					if(msg == null){
 						return;
