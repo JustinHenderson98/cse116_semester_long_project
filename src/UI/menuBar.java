@@ -62,7 +62,8 @@ public class menuBar {
 				int value = 0;
 				Matcher mer;
 				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
-		
+				boolean f = false;
+				
 				if(msg == null){
 					return;
 				}
@@ -72,16 +73,17 @@ public class menuBar {
 				//the above two lines used to determine if the input string is an integer
 				//using regular expression
 				
-				if (mer.find()) value = Integer.valueOf(msg);
-
-				while ( (!mer.find()) || ((value < 0) && (value > 32767)) )  {
-					JOptionPane.showMessageDialog(null, "Input should be an integer and no more than 32767. Press OK to re-enter.");
+				
+				if (f = mer.find()) value = Integer.valueOf(msg);
+						
+				while ( (!f) || ((value < 0) || (value > 32767)) )  {
+					JOptionPane.showMessageDialog(null, "Input should be a positive integer and no more than 32767. Press OK to re-enter.");
 					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
 					if(msg == null){
 						return;
 					}
 					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
-					if (mer.find()) value = Integer.valueOf(msg);;
+					if (f = mer.find()) value = Integer.valueOf(msg);;
 				}
 				
 				_ui._model.set_escapeDistance(value);
