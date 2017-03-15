@@ -16,8 +16,7 @@ import javax.swing.JOptionPane;
 import code.colorModels;  
 
 public class menuBar { 
-	private int n = 4;
-	String[] fractalName = new String[n];
+	//private int n = 4;
     Frame myFrame;  
     MenuBar menubar;  
     Menu file, fractal, editSon1, editSon2, color;  
@@ -29,6 +28,7 @@ public class menuBar {
     MenuItem[] colorSch;
     private int nf = 4; // # of Fractals
     private int nc = 4; // # of Color schemes
+    String[] fractalName = new String[nf];
     private userInterface _ui;
     public menuBar(userInterface ui)  
     {  
