@@ -23,7 +23,7 @@ public class userInterface {
 	private menuBar _menu;
 	private JPanel _globalPanel;
 	private FractalPanel _display;
-	private colorModels _colorModel;
+	colorModels _colorModel; //changed to public
 	public userInterface() {
 		_colorModel = new colorModels();
 		_model = new generateFractal(this);

@@ -119,8 +119,10 @@ public class menuBar {
 					_ui.update();
 				}
 				else {
-					colorModels cM = new colorModels();
-					cM.setColorModel(index);
+					//colorModels cM = new colorModels();
+					_ui._colorModel.setColorModel(index);
+					//cM.setColorModel(index);
+					_ui.update();
 					
 				}
 			}
