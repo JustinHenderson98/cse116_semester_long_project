@@ -17,6 +17,8 @@ public class colorModels {
 	_cms.add(ColorModelFactory.createBluesColorModel(40));
 	
 	_cms.add(ColorModelFactory.createRainbowColorModel(30));
+	
+	_cms.add(ColorModelFactory.createGreensColorModel(40));
 
 	}
 	
