@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 
 import code.colorModels;  
 
-public class menuBar {  
+public class menuBar { 
+	private int n = 4;
+	String[] fractalName = new String[n];
     Frame myFrame;  
     MenuBar menubar;  
     Menu file, fractal, editSon1, editSon2, color;  
@@ -30,6 +32,10 @@ public class menuBar {
     private userInterface _ui;
     public menuBar(userInterface ui)  
     {  
+    	fractalName[0] = "Mandelbrot Set";
+    	fractalName[1] = "Julia Set";
+    	fractalName[2] = "Burning Ship Set";
+    	fractalName[3] = "Multibrot Set";
     	_ui = ui;
     	fra = new MenuItem[nf];
     	colorSch = new MenuItem[nc];
@@ -101,7 +107,7 @@ public class menuBar {
         
         
         for (int i = 0; i < nf; i++) {
-        	String s =  "Fractal " + String.valueOf(i+1);
+        	String s =  fractalName[i];
         	fra[i] = new MenuItem(s);
         	shiftFraOrColor(fra[i], i, -1);
         	fractal.add(fra[i]);
