@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;  
 import java.awt.event.WindowEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -50,18 +52,31 @@ public class menuBar {
         input.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				int value = 0;
+				Matcher mer;
 				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+		
 				if(msg == null){
 					return;
 				}
-				int value = Integer.valueOf(msg);
-				while(value < 0){
-					msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+				
+				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+				//return true is msg is an integer
+				//the above two lines used to determine if the input string is an integer
+				//using regular expression
+				
+				if (mer.find()) value = Integer.valueOf(msg);
+
+				while ( (!mer.find()) || ((value < 0) && (value > 32767)) )  {
+					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
 					if(msg == null){
 						return;
 					}
-					value = Integer.valueOf(msg);
+					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+					if (mer.find()) value = Integer.valueOf(msg);;
 				}
+				
 				_ui._model.set_escapeDistance(value);
 				_ui.update();
 				
