@@ -152,7 +152,7 @@ public class menuBar {
      * @param index: add the index-th condition
      * @param x: x<0 means fractal, x>=0 means color scheme
      */
-    public void shiftFraOrColor(MenuItem myMenuItem, int index, int x) {
+    public void shiftFraOrColor(MenuItem myMenuItem,final int index, final int x) {
     	myMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
