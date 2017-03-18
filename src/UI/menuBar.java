@@ -6,14 +6,10 @@ import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;  
-import java.awt.event.WindowEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.JOptionPane;
-
-import code.colorModels;  
+ 
 
 /**
  * This class is used to hold the menubar and it's action listeners
@@ -43,6 +39,8 @@ public class menuBar {
     /**
      * generates the menubar which contains fractal selection, fractal color,
      * escape distance changes, and the option to exit
+     * @param ui
+     * 			the linked UI object
      */
     public menuBar(userInterface ui)  
     {  
