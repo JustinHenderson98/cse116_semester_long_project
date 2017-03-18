@@ -128,4 +128,17 @@ public class ColorModelFactory {
     IndexColorModel retVal = new IndexColorModel(8, reds.length, reds, greens, blues);
     return retVal;
   }
+  public static IndexColorModel createPurpleColorModel(int numColors) {
+	    byte[] reds = new byte[numColors];
+	    byte[] greens = new byte[numColors];
+	    byte[] blues = new byte[numColors];
+	    for (int i = 0; i < reds.length - 1; i++) {
+	      int rgb = Color.HSBtoRGB(i / ((float) reds.length - 1), 0.6F, 1);
+	      reds[i] = (byte) ((rgb & 0xFF0000) >> 16);
+	      greens[i] = 0;
+	      blues[i] = (byte) (rgb & 0xFF);
+	    }
+	    IndexColorModel retVal = new IndexColorModel(8, reds.length, reds, greens, blues);
+	    return retVal;
+	  }
 }
