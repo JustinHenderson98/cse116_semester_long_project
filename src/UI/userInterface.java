@@ -1,9 +1,6 @@
 package UI;
 
-import java.awt.Color;
-import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.image.IndexColorModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -25,7 +22,7 @@ public class userInterface {
 	private FractalPanel _display;
 	colorModels _colorModel; //changed to public
 	public userInterface() {
-		_colorModel = new colorModels();
+		_colorModel = new colorModels(this);
 		_model = new generateFractal(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();

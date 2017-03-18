@@ -87,7 +87,7 @@ public class menuBar {
 				}
 				
 				_ui._model.set_escapeDistance(value);
-				_ui.update();
+				//_ui.update();
 				
 				
 			}
@@ -140,13 +140,13 @@ public class menuBar {
 				//TODO
 				if (x < 0) {
 					_ui._model.set__fractalType(index + 1);
-					_ui.update();
+					//_ui.update();
 				}
 				else {
 					//colorModels cM = new colorModels();
 					_ui._colorModel.setColorModel(index);
 					//cM.setColorModel(index);
-					_ui.update();
+					//_ui.update();
 					
 				}
 			}
