@@ -1,0 +1,5 @@
+To update the escape distance:
+1) Click the file menu option.
+2) Select input.
+3) Enter a value for the escape distance.
+4) Press OK.

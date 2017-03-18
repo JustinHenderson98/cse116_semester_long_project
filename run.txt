@@ -1,1 +1,1 @@
-To run the program hit play while in the userInterface.
+To run the program hit play while in the userInterface class of package UI, or the main class in edu.buffalo.cse116
