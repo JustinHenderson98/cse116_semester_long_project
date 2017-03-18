@@ -19,11 +19,11 @@ import edu.buffalo.fractal.FractalPanel;
  */
 public class userInterface {
 	private JFrame _frame;
-	public generateFractal _model;
+	private generateFractal _model;
 	private menuBar _menu;
 	private JPanel _globalPanel;
 	private FractalPanel _display;
-	colorModels _colorModel; //changed to public
+	private colorModels _colorModel; //changed to public
 	public userInterface() {
 		_colorModel = new colorModels(this);
 		_model = new generateFractal(this);
@@ -47,5 +47,11 @@ public class userInterface {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		_display.updateImage(_model.genFractal());
 		
+	}
+	public colorModels getColorModel() {
+		return _colorModel;
+	}
+	public generateFractal getModel() {
+		return _model;
 	}
 }
