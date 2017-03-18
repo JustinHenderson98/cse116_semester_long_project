@@ -13,7 +13,7 @@ import UI.userInterface;
  */
 public class generateFractal {
 	private userInterface _ui;
-	public int _escapeDistance = 2;
+	private int _escapeDistance = 2;
 	private int _fractalType = 1;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
