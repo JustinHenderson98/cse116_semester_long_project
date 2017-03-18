@@ -127,6 +127,16 @@ public class ColorModelFactory {
     }
     IndexColorModel retVal = new IndexColorModel(8, reds.length, reds, greens, blues);
     return retVal;
+    /**
+     * Create a color model that contains different shades of purple. The number of
+     * colors included in the model is set by the parameter. This should be 1 more
+     * than the maximum number of steps for the fractal.
+     * 
+     * @param numColors
+     *          Number of different color shades to use.
+     * @return Color model that shows all of the different possible shades of purple
+     *         from pure black to pure white.
+     */
   }
   public static IndexColorModel createPurpleColorModel(int numColors) {
 	    byte[] reds = new byte[numColors];
