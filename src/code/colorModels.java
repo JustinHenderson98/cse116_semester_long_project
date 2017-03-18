@@ -25,7 +25,7 @@ public class colorModels {
 		//COLOR MODEL TEMPLATE
 		_cms.add(ColorModelFactory.createGrayColorModel(500));
 		//TEMPLATE
-		_cms.add(ColorModelFactory.createBluesColorModel(40));
+		_cms.add(ColorModelFactory.createPurpleColorModel(25));
 		
 		_cms.add(ColorModelFactory.createRainbowColorModel(30));
 		
