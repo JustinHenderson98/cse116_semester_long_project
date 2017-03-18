@@ -171,12 +171,10 @@ public class generateFractal {
 				}
 		public void set_escapeDistance(int distance){
 			_escapeDistance = distance;
-			if (_ui != null)
-				_ui.update();
+			_ui.update();
 		}
 		public void set__fractalType(int fractalType) {
 			this._fractalType = fractalType;
-			if (_ui != null)
-				_ui.update();
+			_ui.update();
 		}
 }
