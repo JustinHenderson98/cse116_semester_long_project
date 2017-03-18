@@ -8,7 +8,15 @@ import code.colorModels;
 import code.generateFractal;
 import edu.buffalo.fractal.FractalPanel;
 
-
+/**
+ * displays the menubar and the fractal image
+ * 
+ * @author Justin Henderson
+ * @author Kunku Wu
+ * @author Ethan Gagne
+ * @author Ben Conomos
+ *
+ */
 public class userInterface {
 	public static void main(String[] args)
 	{  
@@ -37,6 +45,9 @@ public class userInterface {
 		_frame.setVisible(true);
 		update();
 	}
+	/**
+	 * generates a new fractal and updates the image
+	 */
 	public void update() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		_display.updateImage(_model.genFractal());

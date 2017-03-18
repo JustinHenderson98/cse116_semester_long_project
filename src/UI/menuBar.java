@@ -15,6 +15,15 @@ import javax.swing.JOptionPane;
 
 import code.colorModels;  
 
+/**
+ * This class is used to hold the menubar and it's action listeners
+ * 
+ * @author Justin Henderson
+ * @author Kunku Wu
+ * @author Ethan Gagne
+ * @author Ben Conomos
+ *
+ */
 public class menuBar { 
 	//private int n = 4;
     Frame myFrame;  
@@ -30,6 +39,11 @@ public class menuBar {
     private int nc = 4; // # of Color schemes
     String[] fractalName = new String[nf];
     private userInterface _ui;
+    
+    /**
+     * generates the menubar which contains fractal selection, fractal color,
+     * escape distance changes, and the option to exit
+     */
     public menuBar(userInterface ui)  
     {  
     	fractalName[0] = "Mandelbrot Set";
@@ -126,13 +140,20 @@ public class menuBar {
          
     } 
     
+    /**
+     * 
+     * @return the menubar object created by the class
+     */
     public MenuBar getMenuBar() {
     	return menubar;
     }
     
-    // parameter myMenuItem: menu item need to add ActionListener
-    // parameter index: add the index-th condition
-    // parameter x: x<0 means fractal, x>=0 means color scheme
+    /**
+     * 
+     * @param myMenuItem: menu item need to add ActionListener
+     * @param index: add the index-th condition
+     * @param x: x<0 means fractal, x>=0 means color scheme
+     */
     public void shiftFraOrColor(MenuItem myMenuItem, int index, int x) {
     	myMenuItem.addActionListener(new ActionListener() {
 			@Override
