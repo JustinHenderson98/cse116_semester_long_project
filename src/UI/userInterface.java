@@ -48,9 +48,17 @@ public class userInterface {
 		_display.updateImage(_model.genFractal());
 		
 	}
+	/**
+	 * Returns the colorModels
+	 * @return the current colorModels object
+	 */
 	public colorModels getColorModel() {
 		return _colorModel;
 	}
+	/**
+	 * Returns the model
+	 * @return the current generateFractal object
+	 */
 	public generateFractal getModel() {
 		return _model;
 	}
