@@ -1,10 +1,21 @@
 package edu.buffalo.cse116;
 
 
-import code.*;
-import UI.*;
-public class Main {
 
+import UI.userInterface;
+/**
+ * This class functions as a runner for the application.
+ * 
+ * @author Justin Henderson
+ * @author Kunku Wu
+ * @author Ethan Gagne
+ * @author Ben Conomos
+ *
+ */
+public class Main {
+	/**
+	 * Main method.
+	 */
   public static void main(String[] args) {
 	  new userInterface();
   }

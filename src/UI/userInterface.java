@@ -18,11 +18,6 @@ import edu.buffalo.fractal.FractalPanel;
  *
  */
 public class userInterface {
-	public static void main(String[] args)
-	{  
-	    new userInterface();  
-	}  
-	
 	private JFrame _frame;
 	public generateFractal _model;
 	private menuBar _menu;
