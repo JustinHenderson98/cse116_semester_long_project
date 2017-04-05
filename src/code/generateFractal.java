@@ -187,6 +187,18 @@ public class generateFractal {
 		public int getMaxSteps() {return maxSteps;}
 		public void setMaxSteps(int j) {maxSteps = j;}
 		
+		public double getXRangeStart() {return xRangeStart;}
+		public void setXRangeStart(double j) {xRangeStart = j;}
+		
+		public double getXRangeEnd() {return xRangeEnd;}
+		public void setXRangeEnd(double j) {xRangeEnd = j;}
+		
+		public double getYRangeStart() {return yRangeStart;}
+		public void setYRangeStart(double j) {yRangeStart = j;}
+		
+		public double getYRangeEnd() {return yRangeEnd;}
+		public void setYRangeEnd(double j) {yRangeEnd = j;}
+
 		public void resetZoom() {
 			set__fractalType(_fractalType);
 		}
