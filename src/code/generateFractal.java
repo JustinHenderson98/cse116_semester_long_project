@@ -14,6 +14,11 @@ import UI.userInterface;
 public class generateFractal {
 	private userInterface _ui;
 	private int _escapeDistance = 2;
+	private	double xRangeStart =0;//initialize 
+	private double xRangeEnd =0;
+	private double yRangeStart =0;
+	private double yRangeEnd =0;
+	private int maxSteps = 255;
 	private int _fractalType = 1;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
@@ -68,43 +73,11 @@ public class generateFractal {
 		int width = 512; //default width
 		int height = 512; //default height
 		//int _escapeDistance = 2; //default escape distance
-		int maxSteps = 255; //default max steps
+		//int maxSteps = 255; //default max steps
 		
-		double xRangeStart =0;//initialize 
-		double xRangeEnd =0;
-		double yRangeStart =0;
-		double yRangeEnd =0;
+
 		
-		//default range values for mandlebrot set
-		if(_fractalType ==1){
-			 xRangeStart = -2.15;
-			 xRangeEnd= 0.6;
-			 yRangeStart = -1.3;
-			 yRangeEnd = 1.3;
-		}
-		//default range values for Julia set
-		else if(_fractalType ==2){
-			xRangeStart = -1.7;
-			 xRangeEnd= 1.7;
-			 yRangeStart = -1.0;
-			 yRangeEnd = 1.0;
-			
-		}
-		//default range values for burning ship set
-		else if(_fractalType ==3){
-			xRangeStart = -1.8;
-			 xRangeEnd= -1.7;
-			 yRangeStart = -0.08;
-			 yRangeEnd = 0.025;
-		}
-		//default range values for multibrot set
-		else if(_fractalType ==4){
-			xRangeStart = -1.0;
-			 xRangeEnd= 1.0;
-			 yRangeStart = -1.3;
-			 yRangeEnd = 1.3;
-			
-		}
+
 		return genFractal(_fractalType, width, height, xRangeStart, xRangeEnd,  yRangeStart, yRangeEnd, maxSteps);
 	}
 
@@ -176,7 +149,45 @@ public class generateFractal {
 		}
 		public void set__fractalType(int fractalType) {
 			this._fractalType = fractalType;
+			//default range values for mandlebrot set
+			if(_fractalType ==1){
+				 xRangeStart = -2.15;
+				 xRangeEnd= 0.6;
+				 yRangeStart = -1.3;
+				 yRangeEnd = 1.3;
+			}
+			//default range values for Julia set
+			else if(_fractalType ==2){
+				xRangeStart = -1.7;
+				 xRangeEnd= 1.7;
+				 yRangeStart = -1.0;
+				 yRangeEnd = 1.0;
+				
+			}
+			//default range values for burning ship set
+			else if(_fractalType ==3){
+				xRangeStart = -1.8;
+				 xRangeEnd= -1.7;
+				 yRangeStart = -0.08;
+				 yRangeEnd = 0.025;
+			}
+			//default range values for multibrot set
+			else if(_fractalType ==4){
+				xRangeStart = -1.0;
+				 xRangeEnd= 1.0;
+				 yRangeStart = -1.3;
+				 yRangeEnd = 1.3;
+				
+			}
 			if (_ui != null)
 				_ui.update();
+		}
+
+		
+		public int getMaxSteps() {return maxSteps;}
+		public void setMaxSteps(int j) {maxSteps = j;}
+		
+		public void resetZoom() {
+			set__fractalType(_fractalType);
 		}
 }
