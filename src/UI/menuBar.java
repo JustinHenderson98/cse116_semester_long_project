@@ -70,36 +70,38 @@ public class menuBar {
         input.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				int value = 0;
-				Matcher mer;
-				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
-				boolean f = false;
-				
-				if(msg == null){
-					return;
-				}
-				
-				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
-				//return true is msg is an integer
-				//the above two lines used to determine if the input string is an integer
-				//using regular expression
+				inputFrame _inputFrame = new inputFrame(_ui);
 				
 				
-				if (f = mer.find()) value = Integer.valueOf(msg);
-						
-				while ( (!f) || ((value < 0) || (value > 32767)) )  {
-					JOptionPane.showMessageDialog(null, "Input should be a positive integer and no more than 32767. Press OK to re-enter.");
-					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
-					if(msg == null){
-						return;
-					}
-					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
-					if (f = mer.find()) value = Integer.valueOf(msg);;
-				}
-				
-				_ui.getModel().set_escapeDistance(value);
-				//_ui.update();
+//				int value = 0;
+//				Matcher mer;
+//				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+//				boolean f = false;
+//				
+//				if(msg == null){
+//					return;
+//				}
+//				
+//				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+//				//return true is msg is an integer
+//				//the above two lines used to determine if the input string is an integer
+//				//using regular expression
+//				
+//				
+//				if (f = mer.find()) value = Integer.valueOf(msg);
+//						
+//				while ( (!f) || ((value < 0) || (value > 32767)) )  {
+//					JOptionPane.showMessageDialog(null, "Input should be a positive integer and no more than 32767. Press OK to re-enter.");
+//					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
+//					if(msg == null){
+//						return;
+//					}
+//					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+//					if (f = mer.find()) value = Integer.valueOf(msg);;
+//				}
+//				
+//				_ui.getModel().set_escapeDistance(value);
+//				//_ui.update();
 				
 				
 			}

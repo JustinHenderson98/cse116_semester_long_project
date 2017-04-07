@@ -62,4 +62,9 @@ public class userInterface {
 	public generateFractal getModel() {
 		return _model;
 	}
+	
+	public static void main(String[] args) {  
+		userInterface ui = new userInterface();  
+  
+    }
 }
