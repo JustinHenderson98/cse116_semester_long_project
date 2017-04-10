@@ -38,15 +38,20 @@ public class userInterface {
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.pack();
 		_frame.setVisible(true);
-		update();
+		init();
 	}
 	/**
 	 * generates a new fractal and updates the image
 	 */
 	public void update() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
-		_display.updateImage(_model.genFractal());
+		_display.updateImage(_model.getFractalHolder());
+	}
+	public void init(){
 		
+		_model.set__fractalType(1);
+		_display.updateImage(_model.genFractal());
+		_display.setIndexColorModel(_colorModel.getColorModel());
 	}
 	/**
 	 * Returns the colorModels

@@ -20,6 +20,7 @@ public class generateFractal {
 	private double yRangeEnd =0;
 	private int maxSteps = 255;
 	private int _fractalType = 1;
+	private int[][] _fractalHolder;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
 	}
@@ -59,7 +60,7 @@ public class generateFractal {
 				fractalSet[rows][cols] = escapeTime(_fractalType, currentXY, _escapeDistance, maxSteps);
 			}
 		}
-		
+		_fractalHolder = fractalSet;
 		return fractalSet;	
 	}
 	
@@ -180,6 +181,7 @@ public class generateFractal {
 				
 			}
 			if (_ui != null)
+				genFractal();
 				_ui.update();
 		}
 
@@ -201,5 +203,8 @@ public class generateFractal {
 
 		public void resetZoom() {
 			set__fractalType(_fractalType);
+		}
+		public int[][] getFractalHolder(){
+			return _fractalHolder;
 		}
 }
