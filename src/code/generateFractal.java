@@ -14,6 +14,7 @@ import UI.userInterface;
 public class generateFractal {
 	private userInterface _ui;
 	private int _escapeDistance = 2;
+	private int _maxEscapeTime = 255; 
 	private	double xRangeStart =0;//initialize 
 	private double xRangeEnd =0;
 	private double yRangeStart =0;
@@ -115,9 +116,11 @@ public class generateFractal {
 				update update = new update();//can probably move this code outside of loop for better run times
 				XYCalc = update.updateXY(_fractalType, XYCalc, currXY);
 				passes++;		
+				if(passes > _maxEscapeTime){
+					return _maxEscapeTime;
+				}
 				dist = distance(XYCalc.x,XYCalc.y) ;
 			}
-			
 			return passes;
 		}
 		/**
@@ -203,7 +206,10 @@ public class generateFractal {
 		public void resetZoom() {
 			set__fractalType(_fractalType);
 		}
-		public int[][] getFractalHolder(){
+		public int[][] getFractalHolder(){ 
 			return _fractalHolder;
+		}
+		public void SetMaxEscapeTime(int time){
+			_maxEscapeTime = time;
 		}
 }

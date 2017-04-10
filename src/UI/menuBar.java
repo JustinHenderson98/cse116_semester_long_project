@@ -63,7 +63,7 @@ public class menuBar {
 
         open = new MenuItem("open");  
         save = new MenuItem("save");
-        input = new MenuItem("input");
+        input = new MenuItem("max escape time");
         line = new MenuItem("-");  
         exit = new MenuItem("exit");
         

@@ -17,14 +17,14 @@ public class inputFrame extends JFrame{
     JScrollPane jsp;    //滚动控件  
     int n = 255; //1~255
     boolean f, ifNewInput;
-    int escapeDistance;
+    int escapetime;
       
     //构造函数  
     public inputFrame(userInterface ui){  
         jp1 = new JPanel(new GridLayout(2,1));  
         jp2 = new JPanel(new GridLayout(2,1));  
           
-        jlb1 = new JLabel("Please Enter a value of escape distance:");  
+        jlb1 = new JLabel("Please Enter a value of escape time:");  
         String str[] = new String[n];
         for (int i = 0; i < n; i++)
         	str[i] = String.valueOf(i+1);
@@ -52,18 +52,19 @@ public class inputFrame extends JFrame{
                     	String msg = (String) jcb.getSelectedItem();
         				Matcher mer;
         				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg); 
-        				if (f = mer.find()) escapeDistance = Integer.valueOf(msg);
-        				if ( (!f) || ((escapeDistance < 0) || (escapeDistance > 255)) ) {
+        				if (f = mer.find()) escapetime = Integer.valueOf(msg);
+        				if ( (!f) || ((escapetime < 0) || (escapetime > 255)) ) {
         					JOptionPane.showMessageDialog(null, "Input must be a positive integer and no more than 255. Press OK to re-enter.");
         				}
         				else {
-        					ui.getModel().set_escapeDistance(escapeDistance);
-        					String jlbs = "Passing Escape Distance";
+        					ui.getModel().SetMaxEscapeTime(escapetime);
+        					String jlbs = "Passing Escape time";
         					jlb2.setText(jlbs);
         					for (int i = 0; i < 6; i++) {
         						try {   
         							Thread.currentThread().sleep(1000);//ms  
         						} catch(Exception e){}
+        						ui.update();
         						jlbs = jlbs + ".";
         						jlb2.setText(jlbs);
         					}
@@ -90,7 +91,7 @@ public class inputFrame extends JFrame{
 
           
         this.setSize(300,200);  
-        this.setTitle("Input Escape Distance");  
+        this.setTitle("Input Escape time");  
         this.setVisible(true);  
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);  
     }  
