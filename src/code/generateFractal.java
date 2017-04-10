@@ -181,7 +181,6 @@ public class generateFractal {
 				
 			}
 			if (_ui != null)
-				genFractal();
 				_ui.update();
 		}
 

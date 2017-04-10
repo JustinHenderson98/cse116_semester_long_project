@@ -43,15 +43,18 @@ public class userInterface {
 	/**
 	 * generates a new fractal and updates the image
 	 */
-	public void update() {
+	public void updateColor() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		_display.updateImage(_model.getFractalHolder());
+	}
+	public void update(){
+		_display.setIndexColorModel(_colorModel.getColorModel());
+		_display.updateImage(_model.genFractal());
 	}
 	public void init(){
 		
 		_model.set__fractalType(1);
-		_display.updateImage(_model.genFractal());
-		_display.setIndexColorModel(_colorModel.getColorModel());
+		update();
 	}
 	/**
 	 * Returns the colorModels

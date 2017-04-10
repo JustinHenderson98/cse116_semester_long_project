@@ -56,7 +56,7 @@ public class colorModels {
 	public void setColorModel(int i) throws IndexOutOfBoundsException {
 		if (i > 0 && i <= _cms.size()) {
 			_cm = i;
-			_ui.update();
+			_ui.updateColor();
 		}
 		else {
 			throw new IndexOutOfBoundsException();
