@@ -25,7 +25,7 @@ public class menuBar {
     Frame myFrame;  
     MenuBar menubar;  
     Menu file, fractal, editSon1, editSon2, color;  
-    MenuItem open, save, input, line, exit,  
+    MenuItem open, save, inputEscapeTime, inputEscapeDis, line, exit,  
     		 fra1, fra2,  
     		 secFra1, secFra2,  
              colorSch1, colorSch2;  
@@ -63,47 +63,52 @@ public class menuBar {
 
         open = new MenuItem("open");  
         save = new MenuItem("save");
-        input = new MenuItem("max escape time");
+        inputEscapeDis = new MenuItem("input escape distance");
+        inputEscapeTime = new MenuItem("max escape time");
         line = new MenuItem("-");  
         exit = new MenuItem("exit");
         
-        input.addActionListener(new ActionListener() {
+        inputEscapeDis.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent arg0) {				
+				
+				int value = 0;
+				Matcher mer;
+				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+				boolean f = false;
+				
+				if(msg == null){
+					return;
+				}
+				
+				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+				//return true is msg is an integer
+				//the above two lines used to determine if the input string is an integer
+				//using regular expression
+				
+				
+				if (f = mer.find()) value = Integer.valueOf(msg);
+						
+				while ( (!f) || ((value < 0) || (value > 32767)) )  {
+					JOptionPane.showMessageDialog(null, "Input should be a positive integer and no more than 32767. Press OK to re-enter.");
+					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
+					if(msg == null){
+						return;
+					}
+					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+					if (f = mer.find()) value = Integer.valueOf(msg);;
+				}
+				
+				_ui.getModel().set_escapeDistance(value);
+				//_ui.update();
+				
+				
+			}
+        });
+        inputEscapeTime.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				inputFrame _inputFrame = new inputFrame(_ui);
-				
-				
-//				int value = 0;
-//				Matcher mer;
-//				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
-//				boolean f = false;
-//				
-//				if(msg == null){
-//					return;
-//				}
-//				
-//				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
-//				//return true is msg is an integer
-//				//the above two lines used to determine if the input string is an integer
-//				//using regular expression
-//				
-//				
-//				if (f = mer.find()) value = Integer.valueOf(msg);
-//						
-//				while ( (!f) || ((value < 0) || (value > 32767)) )  {
-//					JOptionPane.showMessageDialog(null, "Input should be a positive integer and no more than 32767. Press OK to re-enter.");
-//					msg = JOptionPane.showInputDialog("Please Enter a valid value of escape distance:");
-//					if(msg == null){
-//						return;
-//					}
-//					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
-//					if (f = mer.find()) value = Integer.valueOf(msg);;
-//				}
-//				
-//				_ui.getModel().set_escapeDistance(value);
-//				//_ui.update();
-				
-				
+				inputFrame _inputFrame = new inputFrame(_ui);				
 			}
         });
         
@@ -116,7 +121,8 @@ public class menuBar {
         
         file.add(open);  
         file.add(save);
-        file.add(input);
+        file.add(inputEscapeTime);
+        file.add(inputEscapeDis);
         file.add(line);  
         file.add(exit);  
         menubar.add(file);
