@@ -1,8 +1,11 @@
 package UI;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -33,10 +36,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	private JPanel _globalPanel;
 	private FractalPanel _display;
 	private colorModels _colorModel;
-	private Point topLeft = new Point(0,0);
-	private Point bottomRight = new Point(0,0);
+	private int top, bottom, left, right =0;
+	private Point originalP;
+	private Point currentP;
 	private JLabel zoomCoordinates;
 	private JLabel zoomCoordinates1;
+	private JPanel _draw;
 
 	private JLabel mouseCoordinate;
 	
@@ -51,9 +56,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		zoomCoordinates = new JLabel();
 		zoomCoordinates1 = new JLabel();
 		mouseCoordinate = new JLabel();
-		zoomCoordinates.setText("Zoom Top Left : (" + topLeft.getX() + "," + topLeft.getY()+ ")     Top Right: (" + bottomRight.getX() + "," + topLeft.getY());
-		zoomCoordinates1.setText(" Bottom Left : (" + topLeft.getX() + "," + bottomRight.getY()+ ")  Bottom Right: (" + bottomRight.getX() + "," + bottomRight.getY());
-
+		zoomCoordinates.setText("Zoom Top Left : (" + left + "," + top+ ")  Top Right: (" + right + "," + top + ")");
+		zoomCoordinates1.setText(" Bottom Left : (" + left + "," + bottom+ ")  Bottom Right: (" + right + "," + bottom + ")");
 		_textBoxes.add(zoomCoordinates);
 		_textBoxes.add(zoomCoordinates1);
 		_textBoxes.add(mouseCoordinate);
@@ -64,8 +68,10 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_frame.setMenuBar(_menu.getMenuBar());
 		_globalPanel.add(_display);
 		_globalPanel.add(_textBoxes);
-		_globalPanel.addMouseListener(this);
-		_globalPanel.addMouseMotionListener(this);
+		//_globalPanel.addMouseListener(this);
+		//_globalPanel.addMouseMotionListener(this);
+		_display.addMouseListener(this);
+		_display.addMouseMotionListener(this);
 		
 		_frame.add(_globalPanel);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -126,15 +132,19 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		topLeft = e.getPoint();
+		originalP = e.getPoint();
+		top = e.getY();
+		left = e.getX();
 
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		bottomRight = e.getPoint();
-		_model.setZoomBR(bottomRight);
-		_model.setZoomTL(topLeft);
+		//bottomRight = e.getPoint();
+		Point br = new Point(bottom,right);
+		Point tl = new Point(top, left);
+		_model.setZoomBR(br);
+		_model.setZoomTL(tl);
 		_model.coordinateToZoom();
 		System.out.println("updating");
 		update();
@@ -142,11 +152,16 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		bottomRight= e.getPoint();
+		currentP = e.getPoint();
+		top = (int) Math.min(currentP.getY(), originalP.getY());
+		bottom = (int) Math.max(currentP.getY(), originalP.getY());
+		left = (int) Math.min(currentP.getX(), originalP.getX());
+		right = (int) Math.max(currentP.getX(), originalP.getX());
+		
 		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
 
-		zoomCoordinates.setText("Zoom Top Left : (" + topLeft.getX() + "," + topLeft.getY()+ ")  Top Right: (" + bottomRight.getX() + "," + topLeft.getY());
-		zoomCoordinates1.setText(" Bottom Left : (" + topLeft.getX() + "," + bottomRight.getY()+ ")  Bottom Right: (" + bottomRight.getX() + "," + bottomRight.getY());
+		zoomCoordinates.setText("Zoom Top Left : (" + left + "," + top+ ")  Top Right: (" + right + "," + top + ")");
+		zoomCoordinates1.setText(" Bottom Left : (" + left + "," + bottom+ ")  Bottom Right: (" + right + "," + bottom + ")");
 
 	}
 	@Override
@@ -156,4 +171,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 
 		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
 	}
+	
+	
+	
 }

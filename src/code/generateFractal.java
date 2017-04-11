@@ -219,23 +219,11 @@ public class generateFractal {
 		}
 		
 		public void coordinateToZoom(){
-			if(zoomTL.x > zoomBR.x){
-				int tmp = zoomTL.x;
-				zoomTL.x = zoomBR.x;
-				zoomBR.x = tmp;
-			}
-			if(zoomTL.y > zoomBR.y){
-				int tmp = zoomTL.y;
-				zoomTL.y = zoomBR.y;
-				zoomBR.y = tmp;
-			}
-			
-			xRangeEnd = pixelRowToCoordinate(xRangeStart, zoomBR.x);
-			yRangeEnd = pixelColToCoordinate(yRangeStart, zoomBR.y);
-			xRangeStart = pixelRowToCoordinate(xRangeStart, zoomTL.x);
-			yRangeStart = pixelColToCoordinate(yRangeStart, zoomTL.y);
-			System.out.println("gen frac");
-			
+			//zoom x and y are flipped because of a bug core to the program's coordinate system.
+			xRangeEnd = pixelRowToCoordinate(xRangeStart, zoomBR.y);
+			yRangeEnd = pixelColToCoordinate(yRangeStart, zoomBR.x);
+			xRangeStart = pixelRowToCoordinate(xRangeStart, zoomTL.y);
+			yRangeStart = pixelColToCoordinate(yRangeStart, zoomTL.x);			
 			
 		}
 		
