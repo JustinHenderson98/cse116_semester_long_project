@@ -1,5 +1,7 @@
 package code;
 
+import java.awt.Point;
+
 import UI.userInterface;
 
 /**
@@ -19,9 +21,12 @@ public class generateFractal {
 	private double xRangeEnd =0;
 	private double yRangeStart =0;
 	private double yRangeEnd =0;
+	private Point zoomTL;
+	private Point zoomBR;
 	private int maxSteps = 255;
 	private int _fractalType = 1;
 	private int[][] _fractalHolder;
+	private double xSpace, ySpace;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
 	}
@@ -46,17 +51,17 @@ public class generateFractal {
 		
 		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
 		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
-		double xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
-		double ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
+		xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
+		ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
 		
 		currentXY.x = xRangeStart;
 		currentXY.y = yRangeStart;
 		
 		for(int cols = 0; cols<fractalHeight; cols++){
-			currentXY.y =pixelColToCoordinate(yRangeStart, ySpace, cols);
+			currentXY.y =pixelColToCoordinate(yRangeStart,cols);
 			
 			for(int rows = 0; rows <fractalWidth;rows++){ 
-				currentXY.x = pixelRowToCoordinate(xRangeStart, xSpace, rows);
+				currentXY.x = pixelRowToCoordinate(xRangeStart,rows);
 				
 				fractalSet[rows][cols] = escapeTime(_fractalType, currentXY, _escapeDistance, maxSteps);
 			}
@@ -131,7 +136,7 @@ public class generateFractal {
 		 * @param rows integer current row of the array.
 		 * @return double value for the x-coordinate.
 		 */
-		public double pixelRowToCoordinate(double xRangeStart, double xSpace, int rows ){
+		public double pixelRowToCoordinate(double xRangeStart, int rows ){
 					return xRangeStart + xSpace * rows;
 				}
 				
@@ -143,7 +148,7 @@ public class generateFractal {
 		 * @param cols integer value of the current column in the array.
 		 * @return double value for the y-coordinate.
 		 */
-		public double pixelColToCoordinate(double yRangeStart, double ySpace,int cols ){
+		public double pixelColToCoordinate(double yRangeStart,int cols ){
 					return yRangeStart + ySpace * cols;
 				}
 		public void set_escapeDistance(int distance){
@@ -211,5 +216,40 @@ public class generateFractal {
 		}
 		public void SetMaxEscapeTime(int time){
 			_maxEscapeTime = time;
+		}
+		
+		public void coordinateToZoom(){
+			if(zoomTL.x > zoomBR.x){
+				int tmp = zoomTL.x;
+				zoomTL.x = zoomBR.x;
+				zoomBR.x = tmp;
+			}
+			if(zoomTL.y > zoomBR.y){
+				int tmp = zoomTL.y;
+				zoomTL.y = zoomBR.y;
+				zoomBR.y = tmp;
+			}
+			
+			xRangeEnd = pixelRowToCoordinate(xRangeStart, zoomBR.x);
+			yRangeEnd = pixelColToCoordinate(yRangeStart, zoomBR.y);
+			xRangeStart = pixelRowToCoordinate(xRangeStart, zoomTL.x);
+			yRangeStart = pixelColToCoordinate(yRangeStart, zoomTL.y);
+			System.out.println("gen frac");
+			
+			
+		}
+		
+		
+		public Point getZoomBR() {
+			return zoomBR;
+		}
+		public void setZoomBR(Point zoomBR) {
+			this.zoomBR = zoomBR;
+		}
+		public Point getZoomTL() {
+			return zoomTL;
+		}
+		public void setZoomTL(Point zoomTL) {
+			this.zoomTL = zoomTL;
 		}
 }
