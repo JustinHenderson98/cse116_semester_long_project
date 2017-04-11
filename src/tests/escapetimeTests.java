@@ -162,11 +162,13 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateXTest1 = new generateFractal();
-		double output = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, space, 0);
+		pixelToCoordinateXTest1.set_xSpace(space);
+
+		double output = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, 0);
 		assertEquals(-2.15, output, 0.00001);
-		double output2 = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, space, 512);
+		double output2 = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, 512);
 		assertEquals(0.6, output2, 0.00001);
-		double output3 = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, space,206);
+		double output3 = pixelToCoordinateXTest1.pixelRowToCoordinate(rangeStart, 206);
 		assertEquals(-1.043554688, output3, 0.00001);
 	}
 	
@@ -177,9 +179,11 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateXTest2 = new generateFractal();
-		double output = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,0);
+		pixelToCoordinateXTest2.set_xSpace(space);
+
+		double output = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, 0);
 		assertEquals(-1.7, output, 0.00001);
-		double output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateXTest2.pixelRowToCoordinate(rangeStart, 512);
 		assertEquals(1.7, output2, 0.00001);
 	}
 	
@@ -190,9 +194,11 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateXTest3 = new generateFractal();
-		double output = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,0);
+		pixelToCoordinateXTest3.set_xSpace(space);
+
+		double output = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, 0);
 		assertEquals(-1.8, output, 0.00001);
-		double output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateXTest3.pixelRowToCoordinate(rangeStart, 512);
 		assertEquals(-1.7, output2, 0.00001);
 	}
 	
@@ -203,9 +209,11 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateXTest4 = new generateFractal();
-		double output = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,0);
+		pixelToCoordinateXTest4.set_xSpace(space);
+
+		double output = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, 0);
 		assertEquals(-1.0, output, 0.00001);
-		double output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateXTest4.pixelRowToCoordinate(rangeStart, 512);
 		assertEquals(1.0, output2, 0.00001);
 	}
 	
@@ -216,9 +224,11 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateYTest1 = new generateFractal();
-		double output = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,0);
+		pixelToCoordinateYTest1.set_ySpace(space);
+
+		double output = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, 0);
 		assertEquals(-1.3, output, 0.0001);
-		double output2 = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateYTest1.pixelColToCoordinate(rangeStart, 512);
 		assertEquals(1.3, output2, 0.0001);
 	}
 	
@@ -229,9 +239,11 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateYTest2 = new generateFractal();
-		double output = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,0);
+		pixelToCoordinateYTest2.set_ySpace(space);
+
+		double output = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, 0);
 		assertEquals(-1.0, output, 0.0001);
-		double output2 = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateYTest2.pixelColToCoordinate(rangeStart, 512);
 		assertEquals(1.0, output2, 0.0001);
 	}
 	
@@ -242,9 +254,10 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateYTest3 = new generateFractal();
-		double output = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,0);
+		pixelToCoordinateYTest3.set_ySpace(space);
+		double output = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart,0);
 		assertEquals(-0.08, output, 0.0001);
-		double output2 = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateYTest3.pixelColToCoordinate(rangeStart, 512);
 		assertEquals(0.025, output2, 0.0001);
 	}
 	
@@ -255,9 +268,11 @@ public class escapetimeTests {
 		double space = Math.abs( (rangeEnd -  rangeStart) / 512);
 		
 		generateFractal pixelToCoordinateYTest4 = new generateFractal();
-		double output = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,0);
+		pixelToCoordinateYTest4.set_ySpace(space);
+
+		double output = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, 0);
 		assertEquals(-1.3, output, 0.0001);
-		double output2 = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, space,512);
+		double output2 = pixelToCoordinateYTest4.pixelColToCoordinate(rangeStart, 512);
 		assertEquals(1.3, output2, 0.0001);
 	}
 	

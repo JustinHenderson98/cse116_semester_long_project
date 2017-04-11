@@ -26,7 +26,7 @@ public class generateFractal {
 	private int maxSteps = 255;
 	private int _fractalType = 1;
 	private int[][] _fractalHolder;
-	private double xSpace, ySpace;
+	private double _xSpace, _ySpace;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
 	}
@@ -51,8 +51,8 @@ public class generateFractal {
 		
 		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
 		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
-		xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
-		ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
+		_xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
+		_ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
 		
 		currentXY.x = xRangeStart;
 		currentXY.y = yRangeStart;
@@ -137,7 +137,7 @@ public class generateFractal {
 		 * @return double value for the x-coordinate.
 		 */
 		public double pixelRowToCoordinate(double xRangeStart, int rows ){
-					return xRangeStart + xSpace * rows;
+					return xRangeStart + _xSpace * rows;
 				}
 				
 		/**
@@ -149,7 +149,7 @@ public class generateFractal {
 		 * @return double value for the y-coordinate.
 		 */
 		public double pixelColToCoordinate(double yRangeStart,int cols ){
-					return yRangeStart + ySpace * cols;
+					return yRangeStart + _ySpace * cols;
 				}
 		public void set_escapeDistance(int distance){
 			_escapeDistance = distance;
@@ -251,5 +251,17 @@ public class generateFractal {
 		}
 		public void setZoomTL(Point zoomTL) {
 			this.zoomTL = zoomTL;
+		}
+		public double get_ySpace() {
+			return _ySpace;
+		}
+		public void set_ySpace(double _ySpace) {
+			this._ySpace = _ySpace;
+		}
+		public double get_xSpace() {
+			return _xSpace;
+		}
+		public void set_xSpace(double _xSpace) {
+			this._xSpace = _xSpace;
 		}
 }
