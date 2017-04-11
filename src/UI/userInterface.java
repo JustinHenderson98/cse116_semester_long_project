@@ -58,7 +58,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_textBoxes.add(zoomCoordinates1);
 		_textBoxes.add(mouseCoordinate);
 
-		_globalPanel.setLayout(new GridLayout(2,1));
+		//_globalPanel.setLayout(new GridLayout(2,1));
+		_globalPanel.setLayout(new BoxLayout(_globalPanel, BoxLayout.PAGE_AXIS));
 		_frame = new JFrame("CSE116IsBomb_B1");
 		_frame.setMenuBar(_menu.getMenuBar());
 		_globalPanel.add(_display);
