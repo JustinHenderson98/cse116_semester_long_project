@@ -144,9 +144,9 @@ public class ColorModelFactory {
 	    byte[] blues = new byte[numColors];
 	    for (int i = 0; i < reds.length - 1; i++) {
 	      int rgb = Color.HSBtoRGB(i / ((float) reds.length - 1), 0.6F, 1);
-	      reds[i] = (byte) ((rgb & 0xFF0000) >> 16);
+	      reds[i] = (byte) ((Math.log10(i) / Math.log10(reds.length)) * 256);
 	      greens[i] = 0;
-	      blues[i] = (byte) (rgb & 0xFF);
+	      blues[i] = (byte) ((Math.log10(i) / Math.log10(reds.length)) * 256);
 	    }
 	    IndexColorModel retVal = new IndexColorModel(8, reds.length, reds, greens, blues);
 	    return retVal;

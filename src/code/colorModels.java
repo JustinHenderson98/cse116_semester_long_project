@@ -23,13 +23,13 @@ public class colorModels {
 	public colorModels(userInterface ui){
 		_ui = ui;	
 		//COLOR MODEL TEMPLATE
-		_cms.add(ColorModelFactory.createGrayColorModel(500));
+		_cms.add(ColorModelFactory.createGrayColorModel(255));
 		//TEMPLATE
-		_cms.add(ColorModelFactory.createPurpleColorModel(25));
+		_cms.add(ColorModelFactory.createPurpleColorModel(255));
 		
-		_cms.add(ColorModelFactory.createRainbowColorModel(30));
+		_cms.add(ColorModelFactory.createRainbowColorModel(255));
 		
-		_cms.add(ColorModelFactory.createGreensColorModel(40));
+		_cms.add(ColorModelFactory.createGreensColorModel(255));
 
 	}
 	  /**
