@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -13,6 +14,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import code.colorModels;
@@ -34,6 +36,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	private menuBar _menu;
 	private JPanel _textBoxes;
 	private JPanel _globalPanel;
+	private JLayeredPane _holder;
+	private JPanel _draw;
 	private FractalPanel _display;
 	private colorModels _colorModel;
 	private int top, bottom, left, right =0;
@@ -41,7 +45,6 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	private Point currentP;
 	private JLabel zoomCoordinates;
 	private JLabel zoomCoordinates1;
-	private JPanel _draw;
 
 	private JLabel mouseCoordinate;
 	
@@ -50,7 +53,17 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_model = new generateFractal(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
+		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
 		_globalPanel = new JPanel();
+		_holder = new JLayeredPane();
+		_draw = new paint();
+		_draw.setLayout(new BoxLayout(_draw, BoxLayout.X_AXIS));
+		_draw.setOpaque(false);
+		_holder.add(_draw, new Integer(2));
+		_holder.add(_display,  new Integer(1));
+		_holder.setPreferredSize(new Dimension(512, 512));
+		_draw.setSize(new Dimension(512, 512));
+		_display.setSize(new Dimension(512, 512));
 		_textBoxes = new JPanel();
 		_textBoxes.setLayout(new BoxLayout(_textBoxes, BoxLayout.PAGE_AXIS) );
 		zoomCoordinates = new JLabel();
@@ -66,12 +79,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_globalPanel.setLayout(new BoxLayout(_globalPanel, BoxLayout.PAGE_AXIS));
 		_frame = new JFrame("CSE116IsBomb_B1");
 		_frame.setMenuBar(_menu.getMenuBar());
-		_globalPanel.add(_display);
+		_globalPanel.add(_holder);
 		_globalPanel.add(_textBoxes);
-		//_globalPanel.addMouseListener(this);
-		//_globalPanel.addMouseMotionListener(this);
-		_display.addMouseListener(this);
-		_display.addMouseMotionListener(this);
+		_globalPanel.addMouseListener(this);
+		_globalPanel.addMouseMotionListener(this);
+		//_display.addMouseListener(this);
+		//_display.addMouseMotionListener(this);
 		
 		_frame.add(_globalPanel);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -110,10 +123,6 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		return _model;
 	}
 	
-	public static void main(String[] args) {  
-		userInterface ui = new userInterface();  
-  
-    }
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -135,7 +144,6 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		originalP = e.getPoint();
 		top = e.getY();
 		left = e.getX();
-
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -146,6 +154,11 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_model.setZoomBR(br);
 		_model.setZoomTL(tl);
 		_model.coordinateToZoom();
+		top = 0;
+		bottom = 0;
+		left = 0;
+		right = 0;
+		_draw.repaint();
 		System.out.println("updating");
 		update();
 	}
@@ -157,6 +170,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		bottom = (int) Math.max(currentP.getY(), originalP.getY());
 		left = (int) Math.min(currentP.getX(), originalP.getX());
 		right = (int) Math.max(currentP.getX(), originalP.getX());
+		_draw.setVisible(true);
+		_draw.repaint();
 		
 		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
 
@@ -170,6 +185,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		
 
 		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
+	}
+	private class paint extends JPanel{
+		@Override public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			g.drawRect(left, top, right - left, bottom- top);
+		}
 	}
 	
 	public void reset() {
