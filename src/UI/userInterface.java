@@ -172,6 +172,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
 	}
 	
+	public void reset() {
+		System.out.println("reseting");
+		_model.resetZoom();
+		System.out.println("reseting finish");
+	}
+	
 	
 	
 }

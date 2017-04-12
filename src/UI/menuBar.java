@@ -25,7 +25,7 @@ public class menuBar {
     Frame myFrame;  
     MenuBar menubar;  
     Menu file, fractal, editSon1, editSon2, color;  
-    MenuItem open, save, inputEscapeTime, inputEscapeDis, line, exit,  
+    MenuItem open, save, inputEscapeTime, inputEscapeDis, reset, line, exit,  
     		 fra1, fra2,  
     		 secFra1, secFra2,  
              colorSch1, colorSch2;  
@@ -65,6 +65,7 @@ public class menuBar {
         save = new MenuItem("save");
         inputEscapeDis = new MenuItem("input escape distance");
         inputEscapeTime = new MenuItem("max escape time");
+        reset = new MenuItem("reset zoom");
         line = new MenuItem("-");  
         exit = new MenuItem("exit");
         
@@ -111,6 +112,12 @@ public class menuBar {
 				inputFrame _inputFrame = new inputFrame(_ui);				
 			}
         });
+        reset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ui.reset();
+			}
+        });
         
         exit.addActionListener(new ActionListener() {
 			@Override
@@ -123,6 +130,7 @@ public class menuBar {
         file.add(save);
         file.add(inputEscapeTime);
         file.add(inputEscapeDis);
+        file.add(reset);
         file.add(line);  
         file.add(exit);  
         menubar.add(file);
