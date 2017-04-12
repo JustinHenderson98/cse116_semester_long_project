@@ -126,8 +126,8 @@ public class menuBar {
 			}
         });
         
-        file.add(open);  
-        file.add(save);
+        //file.add(open);  
+        //file.add(save);
         file.add(inputEscapeTime);
         file.add(inputEscapeDis);
         file.add(reset);
