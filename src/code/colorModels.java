@@ -20,6 +20,7 @@ public class colorModels {
 	int _cm = 1;
 	int _maxSteps;
 	userInterface _ui;
+	
 	ArrayList<IndexColorModel> _cms; 
 	public colorModels(userInterface ui){
 		_ui = ui;	

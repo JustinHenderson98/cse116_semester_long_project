@@ -196,6 +196,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		return _colorModel;
 	}
 	
+	
 	public void reset() {
 		System.out.println("reseting");
 		_model.resetZoom();

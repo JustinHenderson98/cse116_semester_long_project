@@ -193,6 +193,7 @@ public class generateFractal {
 		}
 
 		
+		
 		public int getMaxSteps() {return maxSteps;}
 		public void setMaxSteps(int j) {maxSteps = j; _ui.getColorModels().updateColorModelMaxSteps(maxSteps);}
 		
