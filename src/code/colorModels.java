@@ -18,19 +18,24 @@ import UI.userInterface;
 
 public class colorModels {
 	int _cm = 1;
+	int _maxSteps;
 	userInterface _ui;
-	ArrayList<IndexColorModel> _cms = new ArrayList<IndexColorModel>(); 
+	ArrayList<IndexColorModel> _cms; 
 	public colorModels(userInterface ui){
 		_ui = ui;	
-		//COLOR MODEL TEMPLATE
-		_cms.add(ColorModelFactory.createGrayColorModel(255));
-		//TEMPLATE
-		_cms.add(ColorModelFactory.createPurpleColorModel(255));
-		
-		_cms.add(ColorModelFactory.createRainbowColorModel(255));
-		
-		_cms.add(ColorModelFactory.createGreensColorModel(255));
+		updateColorModelMaxSteps(255);
 
+	}
+	public void updateColorModelMaxSteps(int i) {
+		_cms = new ArrayList<IndexColorModel>();
+		//COLOR MODEL TEMPLATE
+		_cms.add(ColorModelFactory.createGrayColorModel(i));
+		//TEMPLATE
+		_cms.add(ColorModelFactory.createPurpleColorModel(i));
+		
+		_cms.add(ColorModelFactory.createRainbowColorModel(i));
+		
+		_cms.add(ColorModelFactory.createGreensColorModel(i));
 	}
 	  /**
 	   * Returns the currently selected color model.

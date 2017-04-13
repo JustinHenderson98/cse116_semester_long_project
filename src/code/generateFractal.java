@@ -194,7 +194,7 @@ public class generateFractal {
 
 		
 		public int getMaxSteps() {return maxSteps;}
-		public void setMaxSteps(int j) {maxSteps = j;}
+		public void setMaxSteps(int j) {maxSteps = j; _ui.getColorModels().updateColorModelMaxSteps(maxSteps);}
 		
 		public double getXRangeStart() {return xRangeStart;}
 		public void setXRangeStart(double j) {xRangeStart = j;}

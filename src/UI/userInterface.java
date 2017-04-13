@@ -192,6 +192,9 @@ public class userInterface implements MouseMotionListener, MouseListener {
 			g.drawRect(left, top, right - left, bottom- top);
 		}
 	}
+	public colorModels getColorModels() {
+		return _colorModel;
+	}
 	
 	public void reset() {
 		System.out.println("reseting");
