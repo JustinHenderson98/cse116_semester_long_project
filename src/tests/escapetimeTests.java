@@ -10,6 +10,46 @@ import code.generateFractal;
 public class escapetimeTests {
 	
 	@Test
+	public void mandlebrotescapeDistanceTest(){
+	generateFractal mandlebrotTest = new generateFractal();
+	doublePoint p1 = new doublePoint();
+	p1.x = 0.3207031250000001;
+	p1.y = -0.07109374999999386;
+	int output = mandlebrotTest.escapeTime(1, p1, 135, 255);
+	assertEquals(255, output);
+	}
+	
+	@Test
+	public void juliaescapeDistanceTest(){
+	generateFractal mandlebrotTest = new generateFractal();
+	doublePoint p1 = new doublePoint();
+	p1.x = 1.0492187499999897;
+	p1.y = -0.234375;
+	int output = mandlebrotTest.escapeTime(2, p1, 135, 255);
+	assertEquals(255, output);
+	}
+	
+	@Test
+	public void burningshipescapeDistanceTest(){
+	generateFractal mandlebrotTest = new generateFractal();
+	doublePoint p1 = new doublePoint();
+	p1.x = -1.7443359374999874; 
+	p1.y = -0.017451171875000338;
+	int output = mandlebrotTest.escapeTime(3, p1, 135, 255);
+	assertEquals(255, output);
+	}
+	
+	@Test
+	public void multibrotescapeDistanceTest(){
+	generateFractal mandlebrotTest = new generateFractal();
+	doublePoint p1 = new doublePoint();
+	p1.x = 0.5859375;
+	p1.y = 0.24375000000000108;
+	int output = mandlebrotTest.escapeTime(4, p1, 135, 255);
+	assertEquals(255, output);
+	}
+	
+	@Test
 	public void mandlebrotNeverExceedTest(){
 		generateFractal mandlebrotTest = new generateFractal();
 		doublePoint p1 = new doublePoint(); 
