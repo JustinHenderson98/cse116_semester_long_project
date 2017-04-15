@@ -1,5 +1,10 @@
 To update the escape distance:
 1) Click the file menu option.
-2) Select input.
+2) Select input escape distance.
 3) Enter a value for the escape distance.
 4) Press OK.
+To update the escape time:
+1) Click the File menu option.
+2) Select max escape time.
+3) Enter a value for the escape time or select a value from the drop down menu.
+4) Press OK and wait for the value to be applied.
