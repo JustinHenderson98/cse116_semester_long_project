@@ -1,0 +1,3 @@
+In order to reset the zoom function in the program window, select the File option from the menu bar. 
+Under this menu select the option titled reset zoom. 
+This will return the window zoom to the original fractal image.   
