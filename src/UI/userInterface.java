@@ -48,6 +48,9 @@ public class userInterface implements MouseMotionListener, MouseListener {
 
 	private JLabel mouseCoordinate;
 	
+	/**
+	 * instantiates the gui. 
+	 */
 	public userInterface() {
 		_colorModel = new colorModels(this);
 		_model = new generateFractal(this);
@@ -59,11 +62,10 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_draw = new paint();
 		_draw.setLayout(new BoxLayout(_draw, BoxLayout.X_AXIS));
 		_draw.setOpaque(false);
+		_draw.setSize(512, 512);
 		_holder.add(_draw, new Integer(2));
 		_holder.add(_display,  new Integer(1));
 		_holder.setPreferredSize(new Dimension(512, 512));
-		_draw.setSize(new Dimension(512, 512));
-		_display.setSize(new Dimension(512, 512));
 		_textBoxes = new JPanel();
 		_textBoxes.setLayout(new BoxLayout(_textBoxes, BoxLayout.PAGE_AXIS) );
 		zoomCoordinates = new JLabel();
@@ -75,16 +77,13 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_textBoxes.add(zoomCoordinates1);
 		_textBoxes.add(mouseCoordinate);
 
-		//_globalPanel.setLayout(new GridLayout(2,1));
 		_globalPanel.setLayout(new BoxLayout(_globalPanel, BoxLayout.PAGE_AXIS));
 		_frame = new JFrame("CSE116IsBomb_B1");
 		_frame.setMenuBar(_menu.getMenuBar());
 		_globalPanel.add(_holder);
 		_globalPanel.add(_textBoxes);
-		_globalPanel.addMouseListener(this);
-		_globalPanel.addMouseMotionListener(this);
-		//_display.addMouseListener(this);
-		//_display.addMouseMotionListener(this);
+		_display.addMouseListener(this);
+		_display.addMouseMotionListener(this);
 		
 		_frame.add(_globalPanel);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,16 +92,24 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		init();
 	}
 	/**
-	 * generates a new fractal and updates the image
+	 * Keeps the current fractal, changes the color, and updates the image.
 	 */
 	public void updateColor() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		_display.updateImage(_model.getFractalHolder());
 	}
+	
+	/**
+	 * Generates a new fractal and updates the image.
+	 */
 	public void update(){
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		_display.updateImage(_model.genFractal());
 	}
+	
+	/**
+	 * Generates a mandlebrot fractal then updates the image.
+	 */
 	public void init(){
 		
 		_model.set__fractalType(1);
@@ -138,13 +145,24 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
+	/**
+	 * creates a starting point for the zoom.
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		originalP = e.getPoint();
-		top = e.getY();
-		left = e.getX();
 	}
+	
+	/**
+	 * creates two points for the bottom-right and the top-left of the zoom area using variables top, left, bottom, right.
+	 * assigns these points to the model.
+	 * updates the start and end positions for x and y.
+	 * resets top, left, right, bottom.
+	 * resets the rectangle.
+	 * and updates the fractal using the new coordinates.
+	 * 
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -162,6 +180,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		System.out.println("updating");
 		update();
 	}
+	/**
+	 * updates currentP using current mouse coordinates.
+	 * dynamically reassigns the values for top, left, bottom, right.
+	 * repaints the zoom rectangle 
+	 * outputs the current coordinates to the JLabels 			
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -179,24 +203,39 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		zoomCoordinates1.setText(" Bottom Left : (" + left + "," + bottom+ ")  Bottom Right: (" + right + "," + bottom + ")");
 
 	}
+	
+	/**
+	 * updates the JLabels showing the current mouse position.
+	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
-
 		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
 	}
+	
+	/**
+	 * JPanel that clears itself then draws a rectangle using left, top, bottom, right. 
+	 * @author Justin Henderson
+	 *
+	 */
 	private class paint extends JPanel{
 		@Override public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			g.drawRect(left, top, right - left, bottom- top);
 		}
 	}
+	
+	/**
+	 * 
+	 * @return the _colorModel instance variable.
+	 */
 	public colorModels getColorModels() {
 		return _colorModel;
 	}
 	
-	
+	/**
+	 * Resests the current fractal to it's default starting values.
+	 */
 	public void reset() {
 		System.out.println("reseting");
 		_model.resetZoom();
