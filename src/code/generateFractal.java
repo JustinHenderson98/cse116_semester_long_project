@@ -132,7 +132,6 @@ public class generateFractal {
 		 * translates the current row to a coordinate on the Cartesian plane.
 		 * 
 		 * @param xRangeStart double x-coordinate value that starts where the escape time is calculated.
-		 * @param xSpace double value for the space between each x coordinate.
 		 * @param rows integer current row of the array.
 		 * @return double value for the x-coordinate.
 		 */
@@ -141,21 +140,30 @@ public class generateFractal {
 				}
 				
 		/**
-		 * Same as method above(dublicate code used for legibility)
+		 * Same as method above(duplicate code used for legibility)
 		 * 
 		 * @param yRangeStart double y-coordinate value that starts where the escape time is calculated.
-		 * @param ySpace double value for the space between each y coordinate.
 		 * @param cols integer value of the current column in the array.
 		 * @return double value for the y-coordinate.
 		 */
 		public double pixelColToCoordinate(double yRangeStart,int cols ){
 					return yRangeStart + _ySpace * cols;
 				}
+		/**
+		 * Sets escape distance and updates UI  if there is a UI.
+		 * 
+		 * @param distance The escape distance to use.
+		 */
 		public void set_escapeDistance(int distance){
 			_escapeDistance = distance;
 			if (_ui != null)
 				_ui.update();
 		}
+		/**
+		 * Sets fractal type and default values for that fractal.
+		 * 
+		 * @param fractalType the type of fractal to draw (1 Mandelbrot, 2 Julia, 3 BurningShip, 4 Multibrot)
+		 */
 		public void set__fractalType(int fractalType) {
 			this._fractalType = fractalType;
 			//default range values for mandlebrot set
@@ -193,7 +201,16 @@ public class generateFractal {
 		}
 
 		
-		
+		/**
+		 * set<InstanceVar> setter for instance vars
+		 * @param j the value to set instance var
+		 *
+		 */
+		/**
+		 * get<InstanceVar> getter for instance vars
+		 * @return value of instance var
+		 *
+		 */
 		public int getMaxSteps() {return maxSteps;}
 		public void setMaxSteps(int j) {maxSteps = j; _ui.getColorModels().updateColorModelMaxSteps(maxSteps);}
 		
@@ -209,16 +226,34 @@ public class generateFractal {
 		public double getYRangeEnd() {return yRangeEnd;}
 		public void setYRangeEnd(double j) {yRangeEnd = j;}
 
+		/**
+		 * Redraw current fractal with default zoom values for said fractal.
+		 */
 		public void resetZoom() {
 			set__fractalType(_fractalType);
 		}
+		/**
+		 * Returns matrix holding current fractal
+		 * @return matrix holding current fractal
+		 *
+		 */
 		public int[][] getFractalHolder(){ 
 			return _fractalHolder;
 		}
+		
+		/**
+		 * set max escape time
+		 * @param time the value to set escape time
+		 *
+		 */
 		public void SetMaxEscapeTime(int time){
 			_maxEscapeTime = time;
 		}
-		
+		/**
+		 * sets coordinates to zoom
+		 *
+		 *
+		 */
 		public void coordinateToZoom(){
 			//zoom x and y are flipped because of a bug core to the program's coordinate system.
 			xRangeEnd = pixelRowToCoordinate(xRangeStart, zoomBR.y);
@@ -228,7 +263,10 @@ public class generateFractal {
 			
 		}
 		
-		
+		/**
+		 * More getter/setter pairs
+		 *
+		 */
 		public Point getZoomBR() {
 			return zoomBR;
 		}

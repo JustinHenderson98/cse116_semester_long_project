@@ -27,6 +27,10 @@ public class colorModels {
 		updateColorModelMaxSteps(255);
 
 	}
+	  /**
+	   * Recalculates color models with # of colors relative to maxSteps
+	   * @param i # of colors to create
+	   */
 	public void updateColorModelMaxSteps(int i) {
 		_cms = new ArrayList<IndexColorModel>();
 		//COLOR MODEL TEMPLATE
