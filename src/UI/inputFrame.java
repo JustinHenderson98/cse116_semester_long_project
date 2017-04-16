@@ -9,17 +9,17 @@ import java.util.regex.Pattern;
   
 public class inputFrame extends JFrame{
 	
-    JList jlist;    //列表框  
-    JComboBox jcb;  //下拉框  
-    JPanel jp1, jp2;    //面板  
+    JList jlist;    
+    JComboBox jcb;  
+    JPanel jp1, jp2;    
     JLabel jlb1, jlb2;  
     JButton jb;
-    JScrollPane jsp;    //滚动控件  
+    JScrollPane jsp;    
     int n = 255; //1~255
     boolean f, ifNewInput;
     int escapetime;
       
-    //构造函数  
+    
     public inputFrame(userInterface ui){  
         jp1 = new JPanel(new GridLayout(2,1));  
         jp2 = new JPanel(new GridLayout(2,1));  
@@ -96,9 +96,5 @@ public class inputFrame extends JFrame{
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);  
     }  
       
-//    public static void main(String[] args) {  
-//    	inputFrame _inputFrame = new inputFrame();  
-//  
-//    }  
   
 } 
