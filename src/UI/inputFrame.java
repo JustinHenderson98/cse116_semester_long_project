@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
   
 public class inputFrame extends JFrame{
 	
-    JList jlist;    
-    JComboBox jcb;  
+    //JList<?> jlist;    
+    JComboBox<Object> jcb;  
     JPanel jp1, jp2;    
     JLabel jlb1, jlb2;  
     JButton jb;
@@ -18,17 +18,17 @@ public class inputFrame extends JFrame{
     int n = 255; //1~255
     boolean f, ifNewInput;
     int escapetime;
-      
+    userInterface _ui;
     
     public inputFrame(userInterface ui){  
         jp1 = new JPanel(new GridLayout(2,1));  
         jp2 = new JPanel(new GridLayout(2,1));  
-          
+        _ui = ui;
         jlb1 = new JLabel("Please Enter a value of escape time:");  
         String str[] = new String[n];
         for (int i = 0; i < n; i++)
         	str[i] = String.valueOf(i+1);
-        jcb = new JComboBox(str);  
+        jcb = new JComboBox<Object>(str);  
         jcb.setEditable(true);          
         jp1.add(jlb1);  
         jp1.add(jcb);  
@@ -57,14 +57,14 @@ public class inputFrame extends JFrame{
         					JOptionPane.showMessageDialog(null, "Input must be a positive integer and no more than 255. Press OK to re-enter.");
         				}
         				else {
-        					ui.getModel().SetMaxEscapeTime(escapetime);
+        					_ui.getModel().SetMaxEscapeTime(escapetime);
         					String jlbs = "Passing Escape time";
         					jlb2.setText(jlbs);
         					for (int i = 0; i < 6; i++) {
         						try {   
         							Thread.currentThread().sleep(1000);//ms  
         						} catch(Exception e){}
-        						ui.update();
+        						_ui.update();
         						jlbs = jlbs + ".";
         						jlb2.setText(jlbs);
         					}
