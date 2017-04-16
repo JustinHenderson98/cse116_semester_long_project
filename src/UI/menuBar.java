@@ -115,7 +115,7 @@ public class menuBar {
         reset.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ui.reset();
+				_ui.reset();
 			}
         });
         
