@@ -76,16 +76,23 @@ public class generateFractal {
 	 * @param _fractalType integer value 1 through 4 determines if set is Mandlebrot, Julia, burning Ship, or Multibrot.
 	 * @returnint[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
 	 */
-	public int[][] genFractal(){
-		int width = 512; //default width
-		int height = 512; //default height
+	public int[][] genFractal( int size,int id, int numThreads){
+		
+		int width = size;//default width
+		int height = size/numThreads;
+		double range = xRangeEnd - xRangeStart;
+		double blockSize =range / numThreads;
+		double offset = id * blockSize;
+		double xRStart = xRangeStart + offset;
+		double xREnd = xRStart + blockSize;
+		
 		//int _escapeDistance = 2; //default escape distance
 		//int maxSteps = 255; //default max steps
 		
 
 		
 
-		return genFractal(_fractalType, width, height, xRangeStart, xRangeEnd,  yRangeStart, yRangeEnd, maxSteps);
+		return genFractal(_fractalType, width, height, xRStart, xREnd,  yRangeStart, yRangeEnd, maxSteps);
 	}
 
 		/**
