@@ -13,7 +13,8 @@ public class mainModel {
 	private generateFractal _fractal;
 	private int _size = 512;
 	
-	public mainModel(int numThreads) {
+	public mainModel(userInterface ui,int numThreads) {
+		_ui = ui;
 		_fractal = new generateFractal();
 		
 		updateThreads(numThreads);
@@ -24,8 +25,12 @@ public class mainModel {
 		for (int i = 0; i < _numThreads; i++) {
 			Workers[i] = new FractalWorker(_numThreads, i, _fractal, _size);
 		}
+		_rows = _size;
 		ComputePool comppool = new ComputePool();
-		comppool.changePanel(_ui.getFractalPanel);
+		comppool.changePanel(_ui.getFractalPanel());
 		comppool.generateFractal(_rows, Workers);
+	}
+	public generateFractal getFractalClass(){
+		return _fractal;
 	}
 }

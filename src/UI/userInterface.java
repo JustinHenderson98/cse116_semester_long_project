@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 
 import code.colorModels;
 import code.generateFractal;
+import code.mainModel;
 import edu.buffalo.fractal.FractalPanel;
 
 /**
@@ -32,7 +33,7 @@ import edu.buffalo.fractal.FractalPanel;
  */
 public class userInterface implements MouseMotionListener, MouseListener {
 	private JFrame _frame;
-	private generateFractal _model;
+	private mainModel _model;
 	private menuBar _menu;
 	private JPanel _textBoxes;
 	private JPanel _globalPanel;
@@ -53,7 +54,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	public userInterface() {
 		_colorModel = new colorModels(this);
-		_model = new generateFractal(this);
+		_model = new mainModel(this,1);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
 		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
@@ -96,7 +97,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	public void updateColor() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
-		_display.updateImage(_model.getFractalHolder());
+		//_display.updateImage(_model.getFractal());
+		_model.updateThreads(1);
 	}
 	
 	/**
@@ -104,15 +106,15 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	public void update(){
 		_display.setIndexColorModel(_colorModel.getColorModel());
-		_display.updateImage(_model.genFractal());
+		//_display.updateImage(_model.genFractal());
+		_model.updateThreads(1);
 	}
 	
 	/**
 	 * Generates a mandlebrot fractal then updates the image.
 	 */
 	public void init(){
-		
-		_model.set__fractalType(1);
+		_model.getFractalClass().set__fractalType(1);
 		update();
 	}
 	/**
@@ -126,7 +128,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 * Returns the model
 	 * @return the current generateFractal object
 	 */
-	public generateFractal getModel() {
+	public mainModel getModel() {
 		return _model;
 	}
 	
@@ -169,9 +171,9 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		//bottomRight = e.getPoint();
 		Point br = new Point(bottom,right);
 		Point tl = new Point(top, left);
-		_model.setZoomBR(br);
-		_model.setZoomTL(tl);
-		_model.coordinateToZoom();
+		_model.getFractalClass().setZoomBR(br);
+		_model.getFractalClass().setZoomTL(tl);
+		_model.getFractalClass().coordinateToZoom();
 		top = 0;
 		bottom = 0;
 		left = 0;
@@ -238,10 +240,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	public void reset() {
 		System.out.println("reseting");
-		_model.resetZoom();
+		//_model.resetZoom();
 		System.out.println("reseting finish");
 	}
 	
-	
+	public FractalPanel getFractalPanel(){
+		return _display;
+	}
 	
 }

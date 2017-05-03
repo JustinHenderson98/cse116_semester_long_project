@@ -57,7 +57,7 @@ public class inputFrame extends JFrame{
         					JOptionPane.showMessageDialog(null, "Input must be a positive integer and no more than 255. Press OK to re-enter.");
         				}
         				else {
-        					_ui.getModel().SetMaxEscapeTime(escapetime);
+        					_ui.getModel().getFractalClass().SetMaxEscapeTime(escapetime);
         					String jlbs = "Passing Escape time";
         					jlb2.setText(jlbs);
         					for (int i = 0; i < 6; i++) {

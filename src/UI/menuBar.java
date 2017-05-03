@@ -100,7 +100,7 @@ public class menuBar {
 					if (f = mer.find()) value = Integer.valueOf(msg);;
 				}
 				
-				_ui.getModel().set_escapeDistance(value);
+				_ui.getModel().getFractalClass().set_escapeDistance(value);
 				//_ui.update();
 				
 				
@@ -174,7 +174,7 @@ public class menuBar {
 			public void actionPerformed(ActionEvent arg0) {
 				//TODO
 				if (x < 0) {
-					_ui.getModel().set__fractalType(index + 1);
+					_ui.getModel().getFractalClass().set__fractalType(index + 1);
 					//_ui.update();
 				}
 				else {
