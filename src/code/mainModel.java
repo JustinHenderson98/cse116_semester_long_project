@@ -11,13 +11,14 @@ public class mainModel {
 	private int _rows;
 	private userInterface _ui; //set up observer pattern with this class instead of generateFractal
 	private generateFractal _fractal;
-	private int _size = 512;
+	private int _size = 2048;
+	private ComputePool _pool;
 	
 	public mainModel(userInterface ui,int numThreads) {
 		_ui = ui;
 		_fractal = new generateFractal();
 		
-		updateThreads(numThreads);
+		//updateThreads(numThreads);
 	}
 	public void updateThreads(int numThreads) {
 		_numThreads = numThreads;
@@ -27,10 +28,17 @@ public class mainModel {
 		}
 		_rows = _size;
 		ComputePool comppool = new ComputePool();
+		_pool = comppool;
 		comppool.changePanel(_ui.getFractalPanel());
 		comppool.generateFractal(_rows, Workers);
 	}
 	public generateFractal getFractalClass(){
 		return _fractal;
+	}
+	public ComputePool get_pool() {
+		return _pool;
+	}
+	public void set_pool(ComputePool _pool) {
+		this._pool = _pool;
 	}
 }

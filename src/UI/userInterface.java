@@ -63,10 +63,12 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_draw = new paint();
 		_draw.setLayout(new BoxLayout(_draw, BoxLayout.X_AXIS));
 		_draw.setOpaque(false);
-		_draw.setSize(512, 512);
+		_draw.setSize(1024, 1024);
+		_display.setSize(new Dimension(1024,1024));
+		_display.setDebugGraphicsOptions(2);
 		_holder.add(_draw, new Integer(2));
 		_holder.add(_display,  new Integer(1));
-		_holder.setPreferredSize(new Dimension(512, 512));
+		_holder.setPreferredSize(new Dimension(1024, 1024));
 		_textBoxes = new JPanel();
 		_textBoxes.setLayout(new BoxLayout(_textBoxes, BoxLayout.PAGE_AXIS) );
 		zoomCoordinates = new JLabel();
@@ -98,7 +100,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	public void updateColor() {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		//_display.updateImage(_model.getFractal());
-		_model.updateThreads(1);
+		_model.get_pool().clearPool();
+		_model.updateThreads(8);
 	}
 	
 	/**
@@ -107,7 +110,10 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	public void update(){
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		//_display.updateImage(_model.genFractal());
-		_model.updateThreads(1);
+		if(_model.get_pool() != null){
+		_model.get_pool().clearPool();
+		}
+		_model.updateThreads(8);
 	}
 	
 	/**
@@ -240,7 +246,8 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	public void reset() {
 		System.out.println("reseting");
-		//_model.resetZoom();
+		_model.getFractalClass().resetZoom();
+		update();
 		System.out.println("reseting finish");
 	}
 	

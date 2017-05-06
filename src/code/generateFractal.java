@@ -78,8 +78,8 @@ public class generateFractal {
 	 */
 	public int[][] genFractal( int size,int id, int numThreads){
 		
-		int width = size;//default width
-		int height = size/numThreads;
+		int width = (size/ numThreads);//default width
+		int height = (size);
 		double range = xRangeEnd - xRangeStart;
 		double blockSize =range / numThreads;
 		double offset = id * blockSize;
@@ -203,8 +203,8 @@ public class generateFractal {
 				 yRangeEnd = 1.3;
 				
 			}
-			if (_ui != null)
-				_ui.update();
+			//if (_ui != null)
+				//_ui.update();
 		}
 
 		

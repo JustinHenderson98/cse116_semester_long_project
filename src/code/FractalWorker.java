@@ -22,7 +22,9 @@ public class FractalWorker extends SwingWorker<WorkerResult, Void> {
 	protected WorkerResult doInBackground() throws Exception {
 		
 		_fractal = _fractalClass.genFractal(_size, _id, _numThreads);
-		WorkerResult result = new WorkerResult(_id, _fractal);
+		
+		
+		WorkerResult result = new WorkerResult(_id* (_size/_numThreads), _fractal);
 
 		//generate fractal with genFractal in bounds of thread
 			//rows = rows/_numThreads
