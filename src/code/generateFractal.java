@@ -27,6 +27,8 @@ public class generateFractal {
 	private int _fractalType = 1;
 	private int[][] _fractalHolder;
 	private double _xSpace, _ySpace;
+	private double _xSpaceZ, _ySpaceZ;
+	private int _totalSize;
 	public generateFractal(userInterface ui) {
 		_ui = ui;
 	}
@@ -77,6 +79,7 @@ public class generateFractal {
 	 * @returnint[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
 	 */
 	public int[][] genFractal( int size,int id, int numThreads){
+		_totalSize = size;
 		
 		int width = (size/ numThreads);//default width
 		int height = (size);
@@ -92,7 +95,7 @@ public class generateFractal {
 
 		
 
-		return genFractal(_fractalType, width, height, xRStart, xREnd,  yRangeStart, yRangeEnd, maxSteps);
+		return genFractal(_fractalType , width, height, xRStart, xREnd,  yRangeStart, yRangeEnd, maxSteps);
 	}
 
 		/**
@@ -156,6 +159,21 @@ public class generateFractal {
 		public double pixelColToCoordinate(double yRangeStart,int cols ){
 					return yRangeStart + _ySpace * cols;
 				}
+		
+		public double pixelRowToCoordinateZoom(double xRangeStart, int rows ){
+			return xRangeStart + _xSpaceZ * rows;
+		}
+		
+/**
+ * Same as method above(duplicate code used for legibility)
+ * 
+ * @param yRangeStart double y-coordinate value that starts where the escape time is calculated.
+ * @param cols integer value of the current column in the array.
+ * @return double value for the y-coordinate.
+ */
+public double pixelColToCoordinateZoom(double yRangeStart,int cols ){
+			return yRangeStart + _ySpaceZ * cols;
+		}
 		/**
 		 * Sets escape distance and updates UI  if there is a UI.
 		 * 
@@ -263,10 +281,17 @@ public class generateFractal {
 		 */
 		public void coordinateToZoom(){
 			//zoom x and y are flipped because of a bug core to the program's coordinate system.
-			xRangeEnd = pixelRowToCoordinate(xRangeStart, zoomBR.y);
-			yRangeEnd = pixelColToCoordinate(yRangeStart, zoomBR.x);
-			xRangeStart = pixelRowToCoordinate(xRangeStart, zoomTL.y);
-			yRangeStart = pixelColToCoordinate(yRangeStart, zoomTL.x);			
+			genSpaceZoom();
+			
+			xRangeEnd = pixelRowToCoordinateZoom(xRangeStart, zoomBR.y);
+			yRangeEnd = pixelColToCoordinateZoom(yRangeStart, zoomBR.x);
+			xRangeStart = pixelRowToCoordinateZoom(xRangeStart, zoomTL.y);
+			yRangeStart = pixelColToCoordinateZoom(yRangeStart, zoomTL.x);			
+			
+		}
+		public void genSpaceZoom(){
+			_xSpaceZ = Math.abs( (xRangeEnd -  xRangeStart) / 1024);//calculates the padding between each x-coordinate
+			_ySpaceZ = Math.abs( (yRangeEnd -  yRangeStart) / 1024);//calculates the padding between each y-coordinate
 			
 		}
 		

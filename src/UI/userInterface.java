@@ -101,7 +101,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		//_display.updateImage(_model.getFractal());
 		_model.get_pool().clearPool();
-		_model.updateThreads(8);
+		_model.updateThreads(4);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		if(_model.get_pool() != null){
 		_model.get_pool().clearPool();
 		}
-		_model.updateThreads(8);
+		_model.updateThreads(4);
 	}
 	
 	/**
