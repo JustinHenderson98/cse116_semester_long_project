@@ -53,8 +53,8 @@ public class generateFractal {
 		
 		int[][] fractalSet = new int[fractalWidth][fractalHeight]; //creates new 2d array to hold each pixel value
 		doublePoint currentXY = new doublePoint(); //contains the current x and y coordinates
-		_xSpace = Math.abs( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
-		_ySpace = Math.abs( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
+		_xSpace = ( (xRangeEnd -  xRangeStart) / fractalWidth);//calculates the padding between each x-coordinate
+		_ySpace = ( (yRangeEnd -  yRangeStart) / fractalHeight);//calculates the padding between each y-coordinate
 		
 		currentXY.x = xRangeStart;
 		currentXY.y = yRangeStart;
@@ -107,7 +107,7 @@ public class generateFractal {
 		 */
 		public double distance(double x,double y){
 			//calculates the distance from point x,y from the origin
-			return Math.pow((Math.pow(x, 2.0) + Math.pow(y, 2.0)), 0.5);
+			return Math.sqrt((x*x + y*y));
 		}
 		
 		/**
@@ -290,8 +290,8 @@ public double pixelColToCoordinateZoom(double yRangeStart,int cols ){
 			
 		}
 		public void genSpaceZoom(){
-			_xSpaceZ = Math.abs( (xRangeEnd -  xRangeStart) / 1024);//calculates the padding between each x-coordinate
-			_ySpaceZ = Math.abs( (yRangeEnd -  yRangeStart) / 1024);//calculates the padding between each y-coordinate
+			_xSpaceZ = (xRangeEnd -  xRangeStart) / 1024;//calculates the padding between each x-coordinate
+			_ySpaceZ = (yRangeEnd -  yRangeStart) / 1024;//calculates the padding between each y-coordinate
 			
 		}
 		

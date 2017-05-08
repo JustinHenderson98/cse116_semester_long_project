@@ -175,7 +175,7 @@ public class menuBar {
 				//TODO
 				if (x < 0) {
 					_ui.getModel().getFractalClass().set__fractalType(index + 1);
-					//_ui.update();
+					_ui.update();
 				}
 				else {
 					//colorModels cM = new colorModels();
