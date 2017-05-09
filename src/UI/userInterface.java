@@ -54,9 +54,9 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	public userInterface() {
 		_colorModel = new colorModels(this);
-		_model = new mainModel(this,1);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
+		_model = new mainModel(this,4);
 		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
 		_globalPanel = new JPanel();
 		_holder = new JLayeredPane();
@@ -91,8 +91,9 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_frame.add(_globalPanel);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.pack();
-		_frame.setVisible(true);
 		init();
+		_frame.setVisible(true);
+		
 	}
 	/**
 	 * Keeps the current fractal, changes the color, and updates the image.
@@ -101,7 +102,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_display.setIndexColorModel(_colorModel.getColorModel());
 		//_display.updateImage(_model.getFractal());
 		_model.get_pool().clearPool();
-		_model.updateThreads(4);
+		_model.update();
 	}
 	
 	/**
@@ -113,7 +114,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		if(_model.get_pool() != null){
 		_model.get_pool().clearPool();
 		}
-		_model.updateThreads(4);
+		_model.update();
 	}
 	
 	/**

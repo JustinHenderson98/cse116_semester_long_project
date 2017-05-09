@@ -17,11 +17,9 @@ public class mainModel {
 	public mainModel(userInterface ui,int numThreads) {
 		_ui = ui;
 		_fractal = new generateFractal();
-		
-		//updateThreads(numThreads);
-	}
-	public void updateThreads(int numThreads) {
 		_numThreads = numThreads;
+	}
+	public void update() {
 		SwingWorker<WorkerResult, Void> Workers[] = new SwingWorker[_numThreads];//create SwingWorker array arr with numThreads length
 		for (int i = 0; i < _numThreads; i++) {
 			Workers[i] = new FractalWorker(_numThreads, i, _fractal, _size);
@@ -31,6 +29,9 @@ public class mainModel {
 		_pool = comppool;
 		comppool.changePanel(_ui.getFractalPanel());
 		comppool.generateFractal(_rows, Workers);
+	}
+	public void setThreads(int numThreads) {
+		_numThreads = numThreads;
 	}
 	public generateFractal getFractalClass(){
 		return _fractal;
