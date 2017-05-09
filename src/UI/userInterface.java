@@ -41,6 +41,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	private JPanel _draw;
 	private FractalPanel _display;
 	private colorModels _colorModel;
+	private int _size;
 	private int top, bottom, left, right =0;
 	private Point originalP;
 	private Point currentP;
@@ -53,22 +54,24 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 * instantiates the gui. 
 	 */
 	public userInterface() {
+		_size = 2048;
 		_colorModel = new colorModels(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
-		_model = new mainModel(this,4);
+		_model = new mainModel(this,4,_size);
+		//_size = _model.getSize();
 		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
 		_globalPanel = new JPanel();
 		_holder = new JLayeredPane();
 		_draw = new paint();
 		_draw.setLayout(new BoxLayout(_draw, BoxLayout.X_AXIS));
 		_draw.setOpaque(false);
-		_draw.setSize(1024, 1024);
-		_display.setSize(new Dimension(1024,1024));
+		_draw.setSize(_size, _size);
+		_display.setSize(new Dimension(_size,_size));
 		_display.setDebugGraphicsOptions(2);
 		_holder.add(_draw, new Integer(2));
 		_holder.add(_display,  new Integer(1));
-		_holder.setPreferredSize(new Dimension(1024, 1024));
+		_holder.setPreferredSize(new Dimension(_size, _size));
 		_textBoxes = new JPanel();
 		_textBoxes.setLayout(new BoxLayout(_textBoxes, BoxLayout.PAGE_AXIS) );
 		zoomCoordinates = new JLabel();

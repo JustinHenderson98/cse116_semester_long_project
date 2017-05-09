@@ -290,8 +290,8 @@ public double pixelColToCoordinateZoom(double yRangeStart,int cols ){
 			
 		}
 		public void genSpaceZoom(){
-			_xSpaceZ = (xRangeEnd -  xRangeStart) / 1024;//calculates the padding between each x-coordinate
-			_ySpaceZ = (yRangeEnd -  yRangeStart) / 1024;//calculates the padding between each y-coordinate
+			_xSpaceZ = (xRangeEnd -  xRangeStart) / _totalSize;//calculates the padding between each x-coordinate
+			_ySpaceZ = (yRangeEnd -  yRangeStart) / _totalSize;//calculates the padding between each y-coordinate
 			
 		}
 		

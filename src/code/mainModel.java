@@ -11,13 +11,14 @@ public class mainModel {
 	private int _rows;
 	private userInterface _ui; //set up observer pattern with this class instead of generateFractal
 	private generateFractal _fractal;
-	private int _size = 2048;
+	private int _size;
 	private ComputePool _pool;
 	
-	public mainModel(userInterface ui,int numThreads) {
+	public mainModel(userInterface ui,int numThreads,int size) {
 		_ui = ui;
 		_fractal = new generateFractal();
 		_numThreads = numThreads;
+		_size = size;
 	}
 	public void update() {
 		SwingWorker<WorkerResult, Void> Workers[] = new SwingWorker[_numThreads];//create SwingWorker array arr with numThreads length
@@ -41,5 +42,11 @@ public class mainModel {
 	}
 	public void set_pool(ComputePool _pool) {
 		this._pool = _pool;
+	}
+	public int getSize() {
+		return _size;
+	}
+	public void setSize(int j) {
+		_size = j;
 	}
 }
