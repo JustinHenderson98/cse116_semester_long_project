@@ -58,7 +58,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		_colorModel = new colorModels(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
-		_model = new mainModel(this,4,_size);
+		_model = new mainModel(this,6,_size);
 		//_size = _model.getSize();
 		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
 		_globalPanel = new JPanel();

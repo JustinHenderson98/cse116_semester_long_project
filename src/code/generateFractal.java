@@ -88,7 +88,10 @@ public class generateFractal {
 		double offset = (id * blockSize);
 		double xRStart = xRangeStart + offset;
 		double xREnd = xRStart + blockSize;
-		
+		if(numThreads -1 == id){
+			width = size / numThreads + size % numThreads;
+			xREnd = xRangeEnd;
+			}
 		//int _escapeDistance = 2; //default escape distance
 		//int maxSteps = 255; //default max steps
 		
