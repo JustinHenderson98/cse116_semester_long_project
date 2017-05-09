@@ -54,7 +54,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 * instantiates the gui. 
 	 */
 	public userInterface() {
-		_size = 2048;
+		_size = 1024;
 		_colorModel = new colorModels(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
