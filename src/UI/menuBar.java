@@ -25,7 +25,7 @@ public class menuBar {
     Frame myFrame;  
     MenuBar menubar;  
     Menu file, fractal, editSon1, editSon2, color;  
-    MenuItem open, save, inputEscapeTime, inputEscapeDis, reset, line, exit,  
+    MenuItem open, save, inputEscapeTime, inputEscapeDis, inputThreads, reset, line, exit,  
     		 fra1, fra2,  
     		 secFra1, secFra2,  
              colorSch1, colorSch2;  
@@ -65,6 +65,7 @@ public class menuBar {
         save = new MenuItem("save");
         inputEscapeDis = new MenuItem("input escape distance");
         inputEscapeTime = new MenuItem("max escape time");
+        inputThreads = new MenuItem("number of threads");
         reset = new MenuItem("reset zoom");
         line = new MenuItem("-");  
         exit = new MenuItem("exit");
@@ -75,7 +76,7 @@ public class menuBar {
 				
 				int value = 0;
 				Matcher mer;
-				String msg = JOptionPane.showInputDialog("Please Enter a value of escape distance:");
+				String msg = JOptionPane.showInputDialog("Please enter a value of escape distance:");
 				boolean f = false;
 				
 				if(msg == null){
@@ -112,6 +113,47 @@ public class menuBar {
 				inputFrame _inputFrame = new inputFrame(_ui);				
 			}
         });
+        
+        
+        inputThreads.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent arg0) {				
+				
+				int value = 0;
+				Matcher mer;
+				String msg = JOptionPane.showInputDialog("Please enter the number of threads");
+				boolean f = false;
+				
+				if(msg == null){
+					return;
+				}
+				
+				mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+				//return true is msg is an integer
+				//the above two lines used to determine if the input string is an integer
+				//using regular expression
+				
+				
+				if (f = mer.find()) value = Integer.valueOf(msg);
+						
+				while ( (!f) || ((value < 1) || (value > 128)) )  {
+					JOptionPane.showMessageDialog(null, "Input should be an interger and between 1 to 128. Press OK to re-enter.");
+					msg = JOptionPane.showInputDialog("Please enter a valid number of threads");
+					if(msg == null){
+						return;
+					}
+					mer = Pattern.compile("^[+-]?[0-9]+$").matcher(msg);
+					if (f = mer.find()) value = Integer.valueOf(msg);;
+				}
+				
+				_ui.getModel().setThreads(value);
+				//_ui.update();
+				
+				
+			}
+        });
+        
+        
         reset.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -130,6 +172,7 @@ public class menuBar {
         //file.add(save);
         file.add(inputEscapeTime);
         file.add(inputEscapeDis);
+        file.add(inputThreads);
         file.add(reset);
         file.add(line);  
         file.add(exit);  
