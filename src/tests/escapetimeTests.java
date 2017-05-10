@@ -162,7 +162,20 @@ public class escapetimeTests {
 	public void burningshipTestNoZeroOrOne(){
 		generateFractal burningshipTest3 = new generateFractal();
 		burningshipTest3.set__fractalType(3);
-		int[][] output = burningshipTest3.genFractal();
+		int[][] output = new int [512][512];
+		
+		//int[][] temp1 = burningshipTest3.genFractal(512, 1, 4);
+		//int[][] temp2 = burningshipTest3.genFractal(512, 2, 4);
+		//int[][] temp3 = burningshipTest3.genFractal(512, 3, 4);
+		for (int t = 0; t < 4; t++) {
+			int[][] temp = burningshipTest3.genFractal(512, t, 4);
+			for (int i = 0; i < temp.length; i++) {
+				for (int j = 0; j < temp[0].length; j++){
+					output[i+t*128][j] = temp[i][j];
+				}
+			}
+		}
+		//burningshipTest3.genFractal(512, 0, 1);
 		for (int i = 0; i < output.length; i++) {
 			for (int j = 0; j < output.length; j++) {
 				if(1==output[i][j] || output[i][j] == 0){
