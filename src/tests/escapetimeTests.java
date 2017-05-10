@@ -163,10 +163,6 @@ public class escapetimeTests {
 		generateFractal burningshipTest3 = new generateFractal();
 		burningshipTest3.set__fractalType(3);
 		int[][] output = new int [512][512];
-		
-		//int[][] temp1 = burningshipTest3.genFractal(512, 1, 4);
-		//int[][] temp2 = burningshipTest3.genFractal(512, 2, 4);
-		//int[][] temp3 = burningshipTest3.genFractal(512, 3, 4);
 		for (int t = 0; t < 4; t++) {
 			int[][] temp = burningshipTest3.genFractal(512, t, 4);
 			for (int i = 0; i < temp.length; i++) {
@@ -175,7 +171,6 @@ public class escapetimeTests {
 				}
 			}
 		}
-		//burningshipTest3.genFractal(512, 0, 1);
 		for (int i = 0; i < output.length; i++) {
 			for (int j = 0; j < output.length; j++) {
 				if(1==output[i][j] || output[i][j] == 0){
@@ -189,22 +184,51 @@ public class escapetimeTests {
 	public void return2DArrayOfSize512(){
 		generateFractal return2darray = new generateFractal();
 		return2darray.set__fractalType(1);
-		int[][] array = return2darray.genFractal();
+		int[][] array = new int [512][512];
+		for (int t = 0; t < 4; t++) {
+			int[][] temp = return2darray.genFractal(512, t, 4);
+			for (int i = 0; i < temp.length; i++) {
+				for (int j = 0; j < temp[0].length; j++){
+					array[i+t*128][j] = temp[i][j];
+				}
+			}
+		}
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 		
 		return2darray.set__fractalType(2);
-		array = return2darray.genFractal();
+		for (int t = 0; t < 4; t++) {
+			int[][] temp = return2darray.genFractal(512, t, 4);
+			for (int i = 0; i < temp.length; i++) {
+				for (int j = 0; j < temp[0].length; j++){
+					array[i+t*128][j] = temp[i][j];
+				}
+			}
+		}
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 		
 		return2darray.set__fractalType(3);
-		array = return2darray.genFractal();
+		for (int t = 0; t < 4; t++) {
+			int[][] temp = return2darray.genFractal(512, t, 4);
+			for (int i = 0; i < temp.length; i++) {
+				for (int j = 0; j < temp[0].length; j++){
+					array[i+t*128][j] = temp[i][j];
+				}
+			}
+		}
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 		
 		return2darray.set__fractalType(4);
-		array = return2darray.genFractal();
+		for (int t = 0; t < 4; t++) {
+			int[][] temp = return2darray.genFractal(512, t, 4);
+			for (int i = 0; i < temp.length; i++) {
+				for (int j = 0; j < temp[0].length; j++){
+					array[i+t*128][j] = temp[i][j];
+				}
+			}
+		}
 		assertEquals(512, array.length);
 		assertEquals(512, array[0].length);
 	}
