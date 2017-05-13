@@ -44,19 +44,19 @@ public class userInterface implements MouseMotionListener, MouseListener{
 	 * instantiates the gui. 
 	 */
 	public userInterface() {
-		int _size1 = 1024;
+		int size = 512;
 		_frame = new myFrame();
 		_colorModel = new colorModels(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
-		_model = new mainModel(this,6,2048);
+		_model = new mainModel(this,8,2048);
 		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
 		_holder = new JLayeredPane();
 		_draw = new paint();
 		_draw.setLayout(new BoxLayout(_draw, BoxLayout.X_AXIS));
 		_draw.setOpaque(false);
-		_holder.setSize(new Dimension(_size1, _size1));
-		_holder.setPreferredSize(new Dimension(_size1, _size1));
+		_holder.setSize(new Dimension(size, size));
+		_holder.setPreferredSize(new Dimension(size, size));
 		_draw.setSize(_holder.getSize());
 		_display.setSize(_holder.getSize());
 		_display.setDebugGraphicsOptions(2);

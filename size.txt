@@ -1,3 +1,7 @@
 To verify the size of the output. 
-view UserInterface which sets _size to 2048.
-_size is used in main model which is passed into FractalWorker then finally into generateFractal.
+view UserInterface line 52, which constructs the model as _model = new mainModel(this,8,2048);
+The 3rd argument is the base size of the fractal, which is used in main model which is passed into FractalWorker then finally into generateFractal.
+The window can be resized and the UI will scale correctly.
+
+To see this is actually affecting the fractal, the 3rd argument could be lowered to a tiny value like 64 to produce a very pixelated fractal. 
+The application will still work like this.
