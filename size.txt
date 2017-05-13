@@ -1,0 +1,3 @@
+To verify the size of the output. 
+view UserInterface which sets _size to 2048.
+_size is used in main model which is passed into FractalWorker then finally into generateFractal.

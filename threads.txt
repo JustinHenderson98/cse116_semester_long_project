@@ -1,0 +1,5 @@
+To change the number of threads:
+1) Click the file menu option.
+2) Select number of threads.
+3) Enter value for the number of threads.
+4) Press OK.
