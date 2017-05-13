@@ -46,6 +46,7 @@ public class userInterface implements MouseMotionListener, MouseListener{
 	public userInterface() {
 		int size = 512;
 		_frame = new myFrame();
+		_frame.setTitle("CSE116IsBomb_B1");
 		_colorModel = new colorModels(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
