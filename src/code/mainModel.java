@@ -16,7 +16,7 @@ public class mainModel {
 	
 	public mainModel(userInterface ui,int numThreads,int size) {
 		_ui = ui;
-		_fractal = new generateFractal();
+		_fractal = new generateFractal(this);
 		_numThreads = numThreads;
 		_size = size;
 	}
@@ -43,10 +43,5 @@ public class mainModel {
 	public void set_pool(ComputePool _pool) {
 		this._pool = _pool;
 	}
-	public int getSize() {
-		return _size;
-	}
-	public void setSize(int j) {
-		_size = j;
-	}
+	public userInterface getUI() {return _ui;}
 }

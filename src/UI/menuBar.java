@@ -102,7 +102,7 @@ public class menuBar {
 				}
 				
 				_ui.getModel().getFractalClass().set_escapeDistance(value);
-				//_ui.update();
+				_ui.update();
 				
 				
 			}

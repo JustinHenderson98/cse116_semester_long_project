@@ -1,24 +1,21 @@
 package UI;
 
-import java.awt.Color;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import code.colorModels;
-import code.generateFractal;
 import code.mainModel;
 import edu.buffalo.fractal.FractalPanel;
 
@@ -31,67 +28,48 @@ import edu.buffalo.fractal.FractalPanel;
  * @author Ben Conomos
  *
  */
-public class userInterface implements MouseMotionListener, MouseListener {
+public class userInterface implements MouseMotionListener, MouseListener{
 	private JFrame _frame;
 	private mainModel _model;
 	private menuBar _menu;
-	private JPanel _textBoxes;
-	private JPanel _globalPanel;
 	private JLayeredPane _holder;
 	private JPanel _draw;
 	private FractalPanel _display;
 	private colorModels _colorModel;
-	private int _size;
 	private int top, bottom, left, right =0;
 	private Point originalP;
 	private Point currentP;
-	private JLabel zoomCoordinates;
-	private JLabel zoomCoordinates1;
-
-	private JLabel mouseCoordinate;
 	
 	/**
 	 * instantiates the gui. 
 	 */
 	public userInterface() {
-		_size = 2048;
+		int _size1 = 1024;
+		_frame = new myFrame();
 		_colorModel = new colorModels(this);
 		_menu = new menuBar(this);
 		_display = new FractalPanel();
-		_model = new mainModel(this,6,_size);
-		//_size = _model.getSize();
+		_model = new mainModel(this,6,2048);
 		_display.setLayout(new BoxLayout(_display, BoxLayout.X_AXIS));
-		_globalPanel = new JPanel();
 		_holder = new JLayeredPane();
 		_draw = new paint();
 		_draw.setLayout(new BoxLayout(_draw, BoxLayout.X_AXIS));
 		_draw.setOpaque(false);
-		_draw.setSize(_size, _size);
-		_display.setSize(new Dimension(_size,_size));
+		_holder.setSize(new Dimension(_size1, _size1));
+		_holder.setPreferredSize(new Dimension(_size1, _size1));
+		_draw.setSize(_holder.getSize());
+		_display.setSize(_holder.getSize());
 		_display.setDebugGraphicsOptions(2);
+		
 		_holder.add(_draw, new Integer(2));
 		_holder.add(_display,  new Integer(1));
-		_holder.setPreferredSize(new Dimension(_size, _size));
-		_textBoxes = new JPanel();
-		_textBoxes.setLayout(new BoxLayout(_textBoxes, BoxLayout.PAGE_AXIS) );
-		zoomCoordinates = new JLabel();
-		zoomCoordinates1 = new JLabel();
-		mouseCoordinate = new JLabel();
-		zoomCoordinates.setText("Zoom Top Left : (" + left + "," + top+ ")  Top Right: (" + right + "," + top + ")");
-		zoomCoordinates1.setText(" Bottom Left : (" + left + "," + bottom+ ")  Bottom Right: (" + right + "," + bottom + ")");
-		_textBoxes.add(zoomCoordinates);
-		_textBoxes.add(zoomCoordinates1);
-		_textBoxes.add(mouseCoordinate);
-
-		_globalPanel.setLayout(new BoxLayout(_globalPanel, BoxLayout.PAGE_AXIS));
-		_frame = new JFrame("CSE116IsBomb_B1");
+		
+		
+		_frame.setLayout(new BorderLayout());
 		_frame.setMenuBar(_menu.getMenuBar());
-		_globalPanel.add(_holder);
-		_globalPanel.add(_textBoxes);
 		_display.addMouseListener(this);
 		_display.addMouseMotionListener(this);
-		
-		_frame.add(_globalPanel);
+		_frame.add(_holder);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.pack();
 		init();
@@ -154,7 +132,7 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 		
 	}
 	/**
@@ -165,7 +143,6 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		// TODO Auto-generated method stub
 		originalP = e.getPoint();
 	}
-	
 	/**
 	 * creates two points for the bottom-right and the top-left of the zoom area using variables top, left, bottom, right.
 	 * assigns these points to the model.
@@ -177,8 +154,6 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		//bottomRight = e.getPoint();
 		Point br = new Point(bottom,right);
 		Point tl = new Point(top, left);
 		_model.getFractalClass().setZoomBR(br);
@@ -207,12 +182,9 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		left = (int) Math.min(currentP.getX(), originalP.getX());
 		right = (int) Math.max(currentP.getX(), originalP.getX());
 		_draw.setVisible(true);
+		
 		_draw.repaint();
 		
-		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
-
-		zoomCoordinates.setText("Zoom Top Left : (" + left + "," + top+ ")  Top Right: (" + right + "," + top + ")");
-		zoomCoordinates1.setText(" Bottom Left : (" + left + "," + bottom+ ")  Bottom Right: (" + right + "," + bottom + ")");
 
 	}
 	
@@ -221,8 +193,6 @@ public class userInterface implements MouseMotionListener, MouseListener {
 	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		mouseCoordinate.setText("X: " + e.getX() +"  Y: " + e.getY());
 	}
 	
 	/**
@@ -237,6 +207,33 @@ public class userInterface implements MouseMotionListener, MouseListener {
 		}
 	}
 	
+	/**
+	 * JFrame that listens for when it is resized and updates elements appropriately because we were having difficulty getting them constrained to the regular JFrame. 
+	 * @author Justin Henderson, Ben Conomos
+	 *
+	 */
+	private class myFrame extends JFrame implements ComponentListener{
+		public myFrame() {
+			addComponentListener(this);
+		}
+		@Override
+		public void componentHidden(ComponentEvent e) {}
+
+		@Override
+		public void componentMoved(ComponentEvent e) {}
+			
+		@Override
+		public void componentResized(ComponentEvent e) {
+			int menuPadding = 59;
+			_holder.setSize(this.getWidth(), this.getHeight()-menuPadding);
+			_draw.setSize(this.getWidth(), this.getHeight()-menuPadding);
+			_display.setSize(this.getWidth(), this.getHeight()-menuPadding);
+		}
+
+		@Override
+		public void componentShown(ComponentEvent e) {}
+
+	}
 	/**
 	 * 
 	 * @return the _colorModel instance variable.

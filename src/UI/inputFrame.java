@@ -60,7 +60,8 @@ public class inputFrame extends JFrame{
         					_ui.getModel().getFractalClass().SetMaxEscapeTime(escapetime);
         					String jlbs = "Passing Escape time";
         					jlb2.setText(jlbs);
-        					for (int i = 0; i < 6; i++) {
+        					_ui.update();
+        					/*for (int i = 0; i < 6; i++) {
         						try {   
         							Thread.currentThread().sleep(1000);//ms  
         						} catch(Exception e){}
@@ -79,7 +80,7 @@ public class inputFrame extends JFrame{
         					try {   
         						Thread.currentThread().sleep(2000);//ms  
         					} catch(Exception e){}
-        					setVisible(false);
+        					*/setVisible(false);
                     }
                 }
                      

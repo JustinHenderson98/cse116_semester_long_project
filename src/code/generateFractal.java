@@ -2,7 +2,6 @@ package code;
 
 import java.awt.Point;
 
-import UI.userInterface;
 
 /**
  * class that will generate fractals in either the Mandlebrot Set, Julia Set, Burning Ship Set, or the Multibrot Set.
@@ -14,7 +13,7 @@ import UI.userInterface;
  *
  */
 public class generateFractal {
-	private userInterface _ui;
+	//private userInterface _ui;
 	private int _escapeDistance = 2;
 	private int _maxEscapeTime = 255; 
 	private	double xRangeStart =0;//initialize 
@@ -28,11 +27,9 @@ public class generateFractal {
 	private int[][] _fractalHolder;
 	private double _xSpace, _ySpace;
 	private double _xSpaceZ, _ySpaceZ;
-	private int _totalSize;
-	public generateFractal(userInterface ui) {
-		_ui = ui;
-	}
+	private mainModel _mModel;
 	public generateFractal() {}
+	public generateFractal(mainModel mModel) {_mModel = mModel;}
 
 	/**
 	 * will generate a two-dimmensional array containing integers from 0 to maxSteps. With each coordinate of the array translating to the escape time of a coordinate on the Cartesian plane 
@@ -76,11 +73,9 @@ public class generateFractal {
 	 * Overloaded method to allow default values to be used.
 	 * 
 	 * @param _fractalType integer value 1 through 4 determines if set is Mandlebrot, Julia, burning Ship, or Multibrot.
-	 * @returnint[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
+	 * @return int[][] where each coordinate translates to a 0-255 value calculated by the escape time algorithm(each point is a pixel).
 	 */
 	public int[][] genFractal( int size,int id, int numThreads){
-		_totalSize = size;
-		
 		int width = size/numThreads;//default width
 		int height = (size);
 		double range = xRangeEnd - xRangeStart;
@@ -184,8 +179,8 @@ public double pixelColToCoordinateZoom(double yRangeStart,int cols ){
 		 */
 		public void set_escapeDistance(int distance){
 			_escapeDistance = distance;
-			if (_ui != null)
-				_ui.update();
+			//if (_ui != null)
+			//	_ui.update();
 		}
 		/**
 		 * Sets fractal type and default values for that fractal.
@@ -293,8 +288,8 @@ public double pixelColToCoordinateZoom(double yRangeStart,int cols ){
 			
 		}
 		public void genSpaceZoom(){
-			_xSpaceZ = (xRangeEnd -  xRangeStart) / _totalSize;//calculates the padding between each x-coordinate
-			_ySpaceZ = (yRangeEnd -  yRangeStart) / _totalSize;//calculates the padding between each y-coordinate
+			_xSpaceZ = (xRangeEnd -  xRangeStart) / _mModel.getUI().getFractalPanel().getWidth();//calculates the padding between each x-coordinate
+			_ySpaceZ = (yRangeEnd -  yRangeStart) / _mModel.getUI().getFractalPanel().getHeight();//calculates the padding between each y-coordinate
 			
 		}
 		

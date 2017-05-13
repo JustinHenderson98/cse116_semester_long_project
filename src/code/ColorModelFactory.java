@@ -143,7 +143,6 @@ public class ColorModelFactory {
 	    byte[] greens = new byte[numColors];
 	    byte[] blues = new byte[numColors];
 	    for (int i = 0; i < reds.length - 1; i++) {
-	      int rgb = Color.HSBtoRGB(i / ((float) reds.length - 1), 0.6F, 1);
 	      reds[i] = (byte) ((Math.log10(i) / Math.log10(reds.length)) * 256);
 	      greens[i] = 0;
 	      blues[i] = (byte) ((Math.log10(i) / Math.log10(reds.length)) * 256);
