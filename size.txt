@@ -5,3 +5,6 @@ The window can be resized and the UI will scale correctly.
 
 To see this is actually affecting the fractal, the 3rd argument could be lowered to a tiny value like 64 to produce a very pixelated fractal. 
 The application will still work like this.
+
+NOTE: Due to the Works on My Machine(tm) seal of quality, resizing the window *should* make FractalPanel redraw, but it may not work correctly.
+If it doesn't, simply reselect the same color model you are currently using to force it to redraw.
